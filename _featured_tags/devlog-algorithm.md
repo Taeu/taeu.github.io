@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: Algorithm
-slug: algorithm
-category: devlog
+title: DeepLearning
+slug: dl
+category: DeepLearning
 menu: false
 order: 4
 ---
