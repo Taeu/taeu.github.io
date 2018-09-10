@@ -1,8 +1,8 @@
 ---
 layout: tag-blog
-title: DeepLearning
-slug: dl
+title: CS231n
+slug: cs231n
 category: DeepLearning
 menu: false
-order: 4
+order: 1
 ---
