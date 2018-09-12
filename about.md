@@ -5,4 +5,3 @@ menu: true
 order: 10
 ---
 
-Hi i'm Taeu.
