@@ -19,9 +19,7 @@ tagline:             beginner
 # A short description of the page, used in the sidebar and as fallback for the meta description tag.
 # Markdown enabled, but don't use more than one paragraph (enforced by `>`)
 description:         >
-  Teddy
-  1 posting a day
-  Love Everything
+  1 posting a day,    Love Everything
 
 # This should be the same author as first entry in `_data/authors.yml`
 author:
@@ -29,7 +27,7 @@ author:
   email:             specia1ktu@gmail.com
 
 # Fallback image and color
-image:               /assets/img/taeu.png
+image:               tile.jpg
 color:               '#4f86aa'
 
 # The font used for headings. Expects a string that is a valid CSS font-family value.
@@ -50,10 +48,10 @@ google_fonts:        Lato
 google_analytics:    UA-92346434-1
 
 # Setting a disqus shortname will enable the comment section on pages with `comments: true` in the front matter
-disqus_shortname:    isme2n
+disqus_shortname:    taeu
 
 # This text will appear in the footer of every page. Markdown enabled.
-copyright:           '&copy; 2017. by teddy & isme2n'
+copyright:           '&copy; 2018. by teddy & isme2n'
 
 # Format of the permalinks
 permalink:           pretty
