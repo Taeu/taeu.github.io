@@ -27,7 +27,7 @@ author:
   email:             specia1ktu@gmail.com
 
 # Fallback image and color
-image:               tile.jpg
+image:               tile.png
 color:               '#4f86aa'
 
 # The font used for headings. Expects a string that is a valid CSS font-family value.
