@@ -1,6 +1,6 @@
 ---
 layout: tag-blog
-title: Paper Review
+title: Paper-Review
 slug: paper
 category: dl
 menu: false
