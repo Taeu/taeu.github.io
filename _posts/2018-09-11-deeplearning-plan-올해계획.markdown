@@ -15,13 +15,13 @@ tags: plan
 4. Paper Review
 
 ## 공부 기간
+
 2018.09.10.월 ~ 2018.12.30.일 ( 대략 4개월 간 )
 
 ## 세부 목록
 
 1. CS231n
 	- (1) CS231n 강의 듣고 정리
-   
 2. coursera
 
 	- (1) MachineLearning with GCP & TF
@@ -38,4 +38,3 @@ tags: plan
 	- (1) Optimization
     - (2) Yolo & SSD & RCNN
     - (3) RL 관련 Paper
-	
