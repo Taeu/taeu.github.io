@@ -5,6 +5,7 @@ subtitle:   "[CS231n] optimization landscapes, local search, learning rate, anal
 categories: dl
 tags: cs231n dl optimization
 ---
+
 ## **목표** : Optimization(최적화) 이해
 
 ## **목차**
@@ -18,6 +19,8 @@ tags: cs231n dl optimization
 2018.09.18.화 ~ 2018.09.19.수
 
 ___
+
+
 # **본문**
 
  딥러닝에 대한 기본적인 지식을 쌓고자 Standford의 CS231n 강의를 듣기로 결심했다. 우선적으로 아래 cs231n 강의노트를 공부하고, 틈틈이 이동시간에 youtube에 upload된 cs231n에 해당되는 강의를 볼 생각이다. 강의노트 위주로 정리했고 강의를 보다가 드는 의문점이나, 추가로 찾아본 것들을 같이 적었다. 이해한 사항들을 좀 더 쉽게 풀이하는 과정에서 틀린 표현이 있을 수도 있으므로 참고하면서 읽어주시길 바란다.
@@ -32,7 +35,7 @@ ___
 
 ---
 
-#### **1. 소개 (Introduction)**
+## **1. 소개 (Introduction)**
 
 **Imgae Classification** 문제에 핵심적인 두가지 요소는 다음과 같다.
 - **(1) Score Function (스코어 함수)**
@@ -41,7 +44,7 @@ ___
 
 **`Score 함수`** : 어떤 인풋을 넣었을 때 적절한 output이 나오는 함수. 우리가 흔히 생각할 수 있는 일차함수, 이차함수 등과 같이 어떤 X 값이 넣으면 거기에 대한 결과값이 나오는 함수라고 보면된다.
 
-**`Loss function (손실함수)`** : Error를 계산한 함수. 만약 실제값이 1인데 예측값으로 3이 나왔다고 하면 error는 |1-3|=2 라고 할 수 있는 것처럼, 예측한 값과 실제 값과의 차이가 얼마나 되는지, 여기서는 그러한 차이를 loss로 받아들이면 된다. (이때 loss 실제값과 예측해야할 값 간의 차이외에도 model의 복잡도 등이 또 다른 loss라고 생각해줄 수 있기에 아래에서 정규화항이 loss function에 포함된다)
+**`Loss function (손실함수)`** : Error를 계산한 함수. 만약 실제값이 1인데 예측값으로 3이 나왔다고 하면 error는 abs(1-3)=2 라고 할 수 있는 것처럼, 예측한 값과 실제 값과의 차이가 얼마나 되는지, 여기서는 그러한 차이를 loss로 받아들이면 된다. (이때 loss 실제값과 예측해야할 값 간의 차이외에도 model의 복잡도 등이 또 다른 loss라고 생각해줄 수 있기에 아래에서 정규화항이 loss function에 포함된다)
 
 다음의 예를 보자
 **Linear Function**이 다음과 같다면
@@ -74,7 +77,7 @@ ___
 다시말해, 우리가 **Weight**를 적절히 조절한다면 최저의 Loss를 찾을 수 있게돼 **```Optimization```** 문제를 해결할 수 있을 것이다. 그렇다면 어떻게 Loss를 최적화 시키는 Weight를 찾을 수 있을까?
 
 ___
-#### **2. 손실함수의 시각화 (Visualizing the loss function)**
+## **2. 손실함수의 시각화 (Visualizing the loss function)**
  딥러닝의 문제를 풀때 거의 모든 경우 feature가 많은 고차원에서 정의가 된다. 따라서 시각화에 어려움이 있지만 이런 문제는 (y, w1) 혹은 (y, w1, w2)와 같이 2차원 3차원으로 몇개를 뽑아내어 시각화할 수 있다.
 
 ![3](https://user-images.githubusercontent.com/24144491/45766179-f276d300-bc71-11e8-94a3-9820579a1126.JPG)
@@ -100,7 +103,7 @@ ___
  사실 위에서 W를 [3 x 1] 으로 보고 보고 w0, w1, w2를 나눌 수 있게 한 거일 텐데, 위의 그림을 단순히 더한다면 사실 w0 = w1 = w2 인 하나의 weight로 표현한 거니까, 아래의 그림을 이해할 때는 W [3 x 1] 이지만 사실 W = [w, w, w] 라고 이해하는 것이 더 편할 것. 그래야 저렇게 2차원으로 그림이 나오지 않나. (강의노트만 봐서 강의에 어떤 조건을 말해주었을 수도 있을 것 같음) 어쨌거나 위의 그림은 Convex, 볼록함수 모양이고, 이런 볼록함수의 최적화는 미분을 통해서 해결할 수 있을 것처럼 보인다. (여기서 꺾이는 부분에서 미분을 할 수 없지만, subgradient가 존재하고, 이를 gradient 대신 이용한다고 한다)
 
 ___
-#### **3. 최적화(Optimization)**
+## **3. 최적화(Optimization)**
 - (1) Random Search
 - (2) Random Local Search
 - (3) Following the Gradient
@@ -110,7 +113,7 @@ ___
 - (1)은 Weight를 random 하게 초기화해 Loss를 계산하고 더 낮은 loss 를 발견하면 최적의 Weight를 수정하는 식으로 간다. 하지만 수많은 example과 수많은 차원을 초기화하고 parameter(weight) 하나하나마다 얼만큼의 범위를 초기화해주어야할지도 의문이다.
 
 - (2)은 Weight를 random으로 초기화하고 일정 step만큼 움직이여 가면서 최적의 loss를 찾는다. 이 역시 계속 똑같은 step size만큼 움직여줘야하기 때문에 step size를 얼마로 설정해야하는지 모르며 여전히 비효율적인 면이 있다.
- 
+
 - (3) 만약 미분값을 이용해서 움직인다면 어떨까? 
 ![6](https://user-images.githubusercontent.com/24144491/45765928-4cc36400-bc71-11e8-8be0-970a69ad8cbb.png)
  loss 를 줄이려면 오른쪽으로 가야한다는 것은 눈에 보이니까 안다. 그럼 컴퓨터는 어떻게하면 이런 상황일때 오른 쪽으로 가야할까?
@@ -129,7 +132,7 @@ ___
 
 ___
 
-#### **4. 경사 계산 (Computing the Gradient)**
+## **4. 경사 계산 (Computing the Gradient)**
 - numeric gradient (수치 그라디언트) - 근사
 - analytic gardient (해석적 그라디언트) - 미분 이용
 
@@ -202,7 +205,7 @@ for step_size_log in [-10, -9, -8, -7, -6, -5,-4,-3,-2,-1]:
 
 여기서 생기는 의문점들은 다음과 같다.
 
-- **(1) step size는 얼마나 잡아야하나? -> hyperparameter tuning **
+- **(1) step size는 얼마나 잡아야하나? -> hyperparameter tuning**
 - **(2) 효율성의 문제, 모든 example들을 다 계산해 주어야하나? -> batch size! 바로 아래에**
 
 
@@ -224,7 +227,7 @@ while True:
 
 ___
 
-#### **6. 요약**
+## **6. 요약**
 ![7](https://user-images.githubusercontent.com/24144491/45765932-4f25be00-bc71-11e8-9eae-74167d2b9f88.JPG)
  딥러닝의 학습과정에 대한 설명은 아래와 같다.
 - (1) **Data** / (xi, yi) 이미 값이 있는 x(input)들과 y(label)이 있다.
