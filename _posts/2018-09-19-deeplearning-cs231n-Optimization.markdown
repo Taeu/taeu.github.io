@@ -1,13 +1,11 @@
 ---
-
 layout: post
 title:  "[CS231n] Optimization : SGD"
 subtitle:   "[CS231n] optimization landscapes, local search, learning rate, analytic, numerical gradient"
 categories: dl
-tags: cs231n
-
+tags: cs231n dl optimization
 ---
-##**목표 : Optimization (최적화) 이해**
+## **목표** : Optimization(최적화) 이해
 
 ## **목차**
 1. 소개
@@ -34,16 +32,16 @@ ___
 
 ---
 
-####**1. 소개 (Introduction)**
+#### **1. 소개 (Introduction)**
 
 **Imgae Classification** 문제에 핵심적인 두가지 요소는 다음과 같다.
 - **(1) Score Function (스코어 함수)**
 - **(2) Loass Function (손실 함수)**
 
 
-**```Score 함수```** : 어떤 인풋을 넣었을 때 적절한 output이 나오는 함수. 우리가 흔히 생각할 수 있는 일차함수, 이차함수 등과 같이 어떤 X 값이 넣으면 거기에 대한 결과값이 나오는 함수라고 보면된다.
+**`Score 함수`** : 어떤 인풋을 넣었을 때 적절한 output이 나오는 함수. 우리가 흔히 생각할 수 있는 일차함수, 이차함수 등과 같이 어떤 X 값이 넣으면 거기에 대한 결과값이 나오는 함수라고 보면된다.
 
-**```Loss function (손실함수)```** : Error를 계산한 함수. 만약 실제값이 1인데 예측값으로 3이 나왔다고 하면 error는 |1-3|=2 라고 할 수 있는 것처럼, 예측한 값과 실제 값과의 차이가 얼마나 되는지, 여기서는 그러한 차이를 loss로 받아들이면 된다. (이때 loss 실제값과 예측해야할 값 간의 차이외에도 model의 복잡도 등이 또 다른 loss라고 생각해줄 수 있기에 아래에서 정규화항이 loss function에 포함된다)
+**`Loss function (손실함수)`** : Error를 계산한 함수. 만약 실제값이 1인데 예측값으로 3이 나왔다고 하면 error는 |1-3|=2 라고 할 수 있는 것처럼, 예측한 값과 실제 값과의 차이가 얼마나 되는지, 여기서는 그러한 차이를 loss로 받아들이면 된다. (이때 loss 실제값과 예측해야할 값 간의 차이외에도 model의 복잡도 등이 또 다른 loss라고 생각해줄 수 있기에 아래에서 정규화항이 loss function에 포함된다)
 
 다음의 예를 보자
 **Linear Function**이 다음과 같다면
@@ -66,7 +64,7 @@ ___
 - +1 의 의미는 error를 보정해주기 위한 term
 - aR(W)는 정규화항 (overfitting 완화하기 위해)
 
-위의 예에서 만약 우리가 **좋은 Score함수**가 있어서 X를 넣었는데 라벨들 중 실제 라벨(index, y_i)에 해당하는 값이 가장 높게 나왔다면, `f(x_i;W)_j - f(x_i;W)_(y_i)`  의 값은 항상 음수가 될 거고 +1을 고려하지 않는다면 모든 function에서 Loss 값은 0이 될 것이다. 정규화항을 잠깐 제외하고 생각해준다면 **좋은 Score함수**를 통해 나온 예측값들이 실제 라벨과 유사 혹은 실제 라벨의 인덱스 값이 가장 높게 나오므로 실제 결과를 잘 예측하는 좋은 함수라고 할 수 있다.
+위의 예에서 만약 우리가 **좋은 Score함수**가 있어서 X를 넣었는데 라벨들 중 실제 라벨(index, y_i)에 해당하는 값이 가장 높게 나왔다면, **`f(x_i;W)_j - f(x_i;W)_(y_i)`**  의 값은 항상 음수가 될 거고 +1을 고려하지 않는다면 모든 function에서 Loss 값은 0이 될 것이다. 정규화항을 잠깐 제외하고 생각해준다면 **좋은 Score함수**를 통해 나온 예측값들이 실제 라벨과 유사 혹은 실제 라벨의 인덱스 값이 가장 높게 나오므로 실제 결과를 잘 예측하는 좋은 함수라고 할 수 있다.
 
 
 **좋은 Score함수**란 **좋은 Weight** vector를 갖는다는 의미고 이 **Weight**가 결국 **Loss fucntion**값을 **낮게**한다.
@@ -76,7 +74,7 @@ ___
 다시말해, 우리가 **Weight**를 적절히 조절한다면 최저의 Loss를 찾을 수 있게돼 **```Optimization```** 문제를 해결할 수 있을 것이다. 그렇다면 어떻게 Loss를 최적화 시키는 Weight를 찾을 수 있을까?
 
 ___
-####**2. 손실함수의 시각화 (Visualizing the loss function)**
+#### **2. 손실함수의 시각화 (Visualizing the loss function)**
  딥러닝의 문제를 풀때 거의 모든 경우 feature가 많은 고차원에서 정의가 된다. 따라서 시각화에 어려움이 있지만 이런 문제는 (y, w1) 혹은 (y, w1, w2)와 같이 2차원 3차원으로 몇개를 뽑아내어 시각화할 수 있다.
 
 ![3](https://user-images.githubusercontent.com/24144491/45766179-f276d300-bc71-11e8-94a3-9820579a1126.JPG)
@@ -102,21 +100,21 @@ ___
  사실 위에서 W를 [3 x 1] 으로 보고 보고 w0, w1, w2를 나눌 수 있게 한 거일 텐데, 위의 그림을 단순히 더한다면 사실 w0 = w1 = w2 인 하나의 weight로 표현한 거니까, 아래의 그림을 이해할 때는 W [3 x 1] 이지만 사실 W = [w, w, w] 라고 이해하는 것이 더 편할 것. 그래야 저렇게 2차원으로 그림이 나오지 않나. (강의노트만 봐서 강의에 어떤 조건을 말해주었을 수도 있을 것 같음) 어쨌거나 위의 그림은 Convex, 볼록함수 모양이고, 이런 볼록함수의 최적화는 미분을 통해서 해결할 수 있을 것처럼 보인다. (여기서 꺾이는 부분에서 미분을 할 수 없지만, subgradient가 존재하고, 이를 gradient 대신 이용한다고 한다)
 
 ___
-####**3. 최적화(Optimization)**
+#### **3. 최적화(Optimization)**
 - (1) Random Search
 - (2) Random Local Search
 - (3) Following the Gradient
 
 최적화를 위해 위와 같이 3가지 방법이 있다.
- </br>
- (1)은 Weight를 random 하게 초기화해 Loss를 계산하고 더 낮은 loss 를 발견하면 최적의 Weight를 수정하는 식으로 간다. 하지만 수많은 example과 수많은 차원을 초기화하고 parameter(weight) 하나하나마다 얼만큼의 범위를 초기화해주어야할지도 의문이다.
- </br>
- (2)은 Weight를 random으로 초기화하고 일정 step만큼 움직이여 가면서 최적의 loss를 찾는다. 이 역시 계속 똑같은 step size만큼 움직여줘야하기 때문에 step size를 얼마로 설정해야하는지 모르며 여전히 비효율적인 면이 있다.
- </br>
- (3) 만약 미분값을 이용해서 움직인다면 어떨까? 
+
+- (1)은 Weight를 random 하게 초기화해 Loss를 계산하고 더 낮은 loss 를 발견하면 최적의 Weight를 수정하는 식으로 간다. 하지만 수많은 example과 수많은 차원을 초기화하고 parameter(weight) 하나하나마다 얼만큼의 범위를 초기화해주어야할지도 의문이다.
+
+- (2)은 Weight를 random으로 초기화하고 일정 step만큼 움직이여 가면서 최적의 loss를 찾는다. 이 역시 계속 똑같은 step size만큼 움직여줘야하기 때문에 step size를 얼마로 설정해야하는지 모르며 여전히 비효율적인 면이 있다.
+ 
+- (3) 만약 미분값을 이용해서 움직인다면 어떨까? 
 ![6](https://user-images.githubusercontent.com/24144491/45765928-4cc36400-bc71-11e8-8be0-970a69ad8cbb.png)
  loss 를 줄이려면 오른쪽으로 가야한다는 것은 눈에 보이니까 안다. 그럼 컴퓨터는 어떻게하면 이런 상황일때 오른 쪽으로 가야할까?
- 
+
 - (1) starting point가 pink일때, 저 점에서 미분계수는 -(negative)이다.
 - (2) starting point가 blue일때, 저 점에서 미분계수는 +(positive)이다.
 
@@ -129,9 +127,9 @@ ___
 
 우리가 어떤 w 에서 예측된 loss를 구하고, loss function을 w에 대해서 미분한 계수에 따라서 w의 방향을 옮겨주면 되는 것이다. 이것이 경사하강법인 Gradient Descent이다.
 
-
 ___
-####**4. 경사 계산 (Computing the Gradient)**
+
+#### **4. 경사 계산 (Computing the Gradient)**
 - numeric gradient (수치 그라디언트) - 근사
 - analytic gardient (해석적 그라디언트) - 미분 이용
 
@@ -139,7 +137,7 @@ ___
 ```python
 def eval_numerical_gradient(f, x):
   """
-  a naive implementation of numerical gradient of f at x 
+  a naive implementation of numerical gradient of f at x
   - f should be a function that takes a single argument
   - x is the point (numpy array) to evaluate the gradient at
   """
@@ -209,7 +207,7 @@ for step_size_log in [-10, -9, -8, -7, -6, -5,-4,-3,-2,-1]:
 
 
 ___
-####**5. 경사 하강 (Gradient Descent)**
+#### **5. 경사 하강 (Gradient Descent)**
 
  경사 계산해서 업데이트 해주것도 배웠고 실전에서도 잘 쓸 수 있을지 보았더니, 수 많은 exmaple 들의 (몇 만개 부터 많게는 몇 천 만개 몇 억개 까지) 경사를 모두 계산해주어야 한다면 computation cost가 상당히 많이 들어갈 것이다. 따라서 이 중 몇 개만 뽑아 배치를 이용하는 Mini-batch Gradient Descent가 실전에서 쓰이며, 성능이 좋다는 것이 선험적으로 증명(?)되었다고 한다(rule of thumbs).
 
@@ -226,7 +224,7 @@ while True:
 
 ___
 
-####**6. 요약**
+#### **6. 요약**
 ![7](https://user-images.githubusercontent.com/24144491/45765932-4f25be00-bc71-11e8-9eae-74167d2b9f88.JPG)
  딥러닝의 학습과정에 대한 설명은 아래와 같다.
 - (1) **Data** / (xi, yi) 이미 값이 있는 x(input)들과 y(label)이 있다.
