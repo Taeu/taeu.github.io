@@ -1,9 +1,11 @@
 ---
+
 layout: post
-title:  "[DL][CS231n] "Optimization : SGD"
-subtitle:   "[DL][CS231n] optimization landscapes, local search, learning rate, analytic/numerical gradient"
+title:  "[CS231n] Optimization : SGD"
+subtitle:   "[CS231n] optimization landscapes, local search, learning rate, analytic/numerical gradient"
 categories: dl
 tags: cs231n
+
 ---
 
 ## 목표 : ** Optimization (최적화) 이해 **
@@ -24,14 +26,17 @@ ___
  딥러닝에 대한 기본적인 지식을 쌓고자 Standford의 CS231n 강의를 듣기로 결심했다. 우선적으로 아래 cs231n 강의노트를 공부하고, 틈틈이 이동시간에 youtube에 upload된 cs231n에 해당되는 강의를 볼 생각이다. 강의노트 위주로 정리했고 강의를 보다가 드는 의문점이나, 추가로 찾아본 것들을 같이 적었다. 이해한 사항들을 좀 더 쉽게 풀이하는 과정에서 틀린 표현이 있을 수도 있으므로 참고하면서 읽어주시길 바란다.
 
 ---
+
 #### 참고 자료
 - [CS231n optimization 강의노트](http://cs231n.github.io/optimization-1/)
 - [CS231n linear-classify 강의노트](http://cs231n.github.io/linear-classify/)
 - [CS231n optimization 강의노트 한글 번역(AI-Korea)](http://aikorea.org/cs231n/optimization-1/)
 - [구글 머신러닝 단기집중과정-손실part](https://developers.google.com/machine-learning/crash-course/reducing-loss/gradient-descent?hl=ko)
+
 ---
 
 ___
+
 ####**1. 소개 (Introduction)**
 
 **Imgae Classification** 문제에 핵심적인 두가지 요소는 다음과 같다.
@@ -40,18 +45,19 @@ ___
 
 
  **```Score 함수```** : 어떤 인풋을 넣었을 때 적절한 output이 나오는 함수. 우리가 흔히 생각할 수 있는 일차함수, 이차함수 등과 같이 어떤 X 값이 넣으면 거기에 대한 결과값이 나오는 함수라고 보면된다.
- 
+
  **```Loss function (손실함수)```** : Error를 계산한 함수. 만약 실제값이 1인데 예측값으로 3이 나왔다고 하면 error는 |1-3|=2 라고 할 수 있는 것처럼, 예측한 값과 실제 값과의 차이가 얼마나 되는지, 여기서는 그러한 차이를 loss로 받아들이면 된다. (이때 loss 실제값과 예측해야할 값 간의 차이외에도 model의 복잡도 등이 또 다른 loss라고 생각해줄 수 있기에 아래에서 정규화항이 loss function에 포함된다)
 
 다음의 예를 보자
 <p> **Linear Function**이 다음과 같다면  </p>
-![2](https://github.com/Taeu/taeu.github.io/issues/2#issuecomment-422855450)
+![09182](https://user-images.githubusercontent.com/24144491/45766101-b7749f80-bc71-11e8-945f-ec2a6a72a2f5.JPG)
 <p> **SVM Loss Function**와 같은 손실함수를 표현할 수 있다.  </p>
-![1](https://github.com/Taeu/taeu.github.io/issues/2#issue-361813400)
+![09181](https://user-images.githubusercontent.com/24144491/45765918-4503bf80-bc71-11e8-981a-0723fcabcd66.JPG)
 
 (SVM Loss Function 에 대해 자세히 알고싶다면 다음 자료를 참고 : [cs231n SVM 관련 자료](http://cs231n.github.io/linear-classify/))
 
-그래도 간단히 설명하자면, 
+그래도 간단히 설명하자면,
+
 - N은 example의 총 개수
 - i는 example 중 i번째 example
 - j는 class중 j번째 class
@@ -69,17 +75,18 @@ ___
 ___
 ####**2. 손실함수의 시각화 (Visualizing the loss function)**
  딥러닝의 문제를 풀때 거의 모든 경우 feature가 많은 고차원에서 정의가 된다. 따라서 시각화에 어려움이 있지만 이런 문제는 (y, w1) 혹은 (y, w1, w2)와 같이 2차원 3차원으로 몇개를 뽑아내어 시각화할 수 있다.
-![3](https://github.com/Taeu/taeu.github.io/issues/2#issuecomment-422855534)
+
+![3](https://user-images.githubusercontent.com/24144491/45766179-f276d300-bc71-11e8-94a3-9820579a1126.JPG)
 - 3개의 1차원 점들 (x0,x1,x2)
 - 정규화항 없는 손실
 - y_i = i (즉, x0의 실제 label = 0, x1의 실제 라벨 = 1)
 - W는 [K x D] (여기서 K는 class 수 이므로 3개, D는 dimension인데 x의 dimension이 1이므로 1)
 
 라고 이해를 하면 총 Loss(=L)는 다음과 같다.
-![4](https://github.com/Taeu/taeu.github.io/issues/2#issuecomment-422855550)
+![4](https://user-images.githubusercontent.com/24144491/45765923-49c87380-bc71-11e8-901c-48afbbcfaffa.JPG)
 
 이를 다음과 같이 시각화하면 다음과 같은 그래프가 그려진다고 하자.
-![5](https://github.com/Taeu/taeu.github.io/issues/2#issuecomment-422855584)
+![5](https://user-images.githubusercontent.com/24144491/45765925-4b923700-bc71-11e8-93f0-77abadec47bb.JPG)
 - x축이 Weight 이고 y축이 Loss(손실)
 - 왼쪽 그림은 각각의 Weight_i와 Loss_i의 관계를 그린 그래프. (w0,y), (w1,y), (w2,y)
 - 왼쪽의 그림을 다 더한것이 오른쪽 그림
@@ -101,7 +108,7 @@ ___
  (2)은 Weight를 random으로 초기화하고 일정 step만큼 움직이여 가면서 최적의 loss를 찾는다. 이 역시 계속 똑같은 step size만큼 움직여줘야하기 때문에 step size를 얼마로 설정해야하는지 모르며 여전히 비효율적인 면이 있다.
  </br>
  (3) 만약 미분값을 이용해서 움직인다면 어떨까? 
-![6](https://github.com/Taeu/taeu.github.io/issues/2#issuecomment-422855646)
+![6](https://user-images.githubusercontent.com/24144491/45765928-4cc36400-bc71-11e8-8be0-970a69ad8cbb.png)
  loss 를 줄이려면 오른쪽으로 가야한다는 것은 눈에 보이니까 안다. 그럼 컴퓨터는 어떻게하면 이런 상황일때 오른 쪽으로 가야할까?
  
 - (1) starting point가 pink일때, 저 점에서 미분계수는 -(negative)이다.
@@ -124,11 +131,11 @@ ___
 `numeric gradient`의 코드를 보자면 다음과 같다.
 ```python
 def eval_numerical_gradient(f, x):
-  """ 
+  """
   a naive implementation of numerical gradient of f at x 
   - f should be a function that takes a single argument
   - x is the point (numpy array) to evaluate the gradient at
-  """ 
+  """
 
   fx = f(x) # evaluate function value at original point
   grad = np.zeros(x.shape)
@@ -207,12 +214,12 @@ while True:
   weights_grad = evaluate_gradient(loss_fun, data_batch, weights)
   weights += - step_size * weights_grad # 파라미터 업데이트(parameter update)
 ```
-* Batch size는 2의 제곱수가 입력될 때 빠르다고 한다.(32, 64, 128 같은 것) 
+* Batch size는 2의 제곱수가 입력될 때 빠르다고 한다.(32, 64, 128 같은 것)
 </br>
 ___
 
 ####**6. 요약**
-![7](https://github.com/Taeu/taeu.github.io/issues/2#issuecomment-422855688)
+![7](https://user-images.githubusercontent.com/24144491/45765932-4f25be00-bc71-11e8-9eae-74167d2b9f88.JPG)
  딥러닝의 학습과정에 대한 설명은 아래와 같다.
 - (1) **Data** / (xi, yi) 이미 값이 있는 x(input)들과 y(label)이 있다.
 - (2) **Score함수** / 처음에는 random 값으로 W vector를 정의한다
@@ -224,7 +231,7 @@ ___
 
 
  이 학습과정은 딥러닝의 전반적인 학습 과정의 순서이다. 이 과정에서 역시 추후에 다루어야할 문제들이 몇 가지 있는데,
- 
+
 - (1)번 과정에서 데이터를 어떻게 구성할지
 - (2)번 과정에서 W 초기화 문제
 - (5)번 과정의 Loss function 구성, Regularizaiton term을 어떻게 구성할지
