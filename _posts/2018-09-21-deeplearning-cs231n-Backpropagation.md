@@ -16,8 +16,12 @@ Backpropagation에 대한 직관적인 이해를 바탕으로 backprop의 과정
 ## **참고자료**
 - [CS231n 강의노트 Backpropagation](http://cs231n.github.io/optimization-2/#intro)
 - [CS231n 강의노트 Backpropagation-한글번역](http://aikorea.org/cs231n/optimization-2/#intro)
+
+
 ___
+
 # **본문**
+
 오늘은 **CS231n**의 Course Note 중 **Module 1: Neural Networks**의 4번째 순서에 있는 **Backpropagation**에 대해서 공부해보고자 한다. 참고로 이번 강의노트를 이해하기 위해서는 미분에 대한 개념과 행렬에 대한 곱셈 과정을 알아야 이해하기 쉽다. 간단한 설명도 추가할거지만 이 글로 이해가 잘 되지 않는다면 **미분**, **chain rule**, **행렬의 연산** 등에 대해 추가적으로 찾아보길 적극 권장한다. (나중에 여유가 된다면 이런 부분에 대해서도 포스팅하거나 관련 개념을 쉽게 이해할 수 있는 링크를 추가할 계획이다)
 
 ## **목차**
@@ -87,14 +91,14 @@ q 는 3이 되고 f는 -12가 된다.
 
 ![7](https://user-images.githubusercontent.com/24144491/45867900-6f639300-bdbf-11e8-9c5b-a7f2efc49504.png)
 
-여기서 ∂f / ∂x 는 어떻게 구할까?
+여기서 **`∂f / ∂x`** 는 어떻게 구할까?
 
 x라는 변수가 바로 f로 가는게 아니라, x라는 변수가 q = x + y 라는 함수를 거치고, 그 함수가 f = q*z 로 이어진다.
 즉, x 가 변하면 -> q 가 변하고 -> f 가 변하는 것이다.
 
-따라서 f를 미분할 때도,
+따라서 **f를 미분**할 때도,
 
-x가 변함에 따라 q가 변하는 것과 그렇게 바뀐 q가 변함에 따라 f가 변함을 같이 고려해 주어야 하므로 다음과 같은 식이 나온다. 이게 바로 **Chain rule**(연쇄법칙)이다.
+**x**가 변함에 따라 **q**가 변하는 것과 그렇게 바뀐 **q**가 변함에 따라 **f**가 변함을 같이 고려해 주어야 하므로 다음과 같은 식이 나온다. 이게 바로 **Chain rule****(연쇄법칙)**이다.
 
 ![8](https://user-images.githubusercontent.com/24144491/45867902-6ffc2980-bdbf-11e8-83b8-314c8188f217.JPG)
 
@@ -170,7 +174,9 @@ dw = [x[0] * ddot, x[1] * ddot, 1.0 * ddot] # backprop into w
 # we're done! we have the gradients on the inputs to the circuit
 ```
 구현 팁(protip): forward pass 회로(?)나 함수들을 backprop을 쉽게할 수 있는 함수로 잘게 분해하는 것은 언제나 도움이 된다고 한다. 위의 코드에서 dot과 f함수를 만든 것처럼.
+
 ___
+
 ## **6. Backprop 실제 : 단계별 계산**
 
 또 다른 예제를 통해서 Backprop을 확인해보자.
@@ -185,17 +191,18 @@ y = -4
 # forward pass
 
 
-sigy = 1.0 / (1 + math.exp(-y)) # sigmoid in numerator   #(1)
-num = x + sigy # numerator (분자)                        #(2)
+sigy = 1.0 / (1 + math.exp(-y)) # sigmoid in numerator   		 #(1)
+num = x + sigy # numerator (분자)									#(2)
 #--------------------------------------------------------#
-sigx = 1.0 / (1 + math.exp(-x)) # sigmoid in denominator #(3)
-xpy = x + y                                              #(4)
-xpysqr = xpy**2  										#(5)
-den = sigx + xpysqr # denominator(분모)                  #(6)
-invden = 1.0 / den                                       #(7)
+sigx = 1.0 / (1 + math.exp(-x)) # sigmoid in denominator 		#(3)
+xpy = x + y                                              		#(4)
+xpysqr = xpy**2  												#(5)
+den = sigx + xpysqr # denominator(분모)                  			#(6)
+invden = 1.0 / den                                       		#(7)
 #--------------------------------------------------------#
-f = num * invden # done!                                 #(8)
-
+f = num * invden # done!                                 		#(8)
+```
+```python
 # backprop f = num * invden
 dnum = invden # gradient on numerator                             #(8)
 dinvden = num                                                     #(8)
@@ -220,11 +227,11 @@ dy += ((1 - sigy) * sigy) * dsigy                                 #(1)
 ```
 
 여기서 몇 가지 주의할 점들은 다음과 같다.
-- (1) forward 변수들 cache(저장)하라.
-- (2) Gradients를 더하라.
+- (1) forward 변수들 **cache(저장)**하라.
+- (2) **Gradients**를 **더하라**.
 
 (1) cache를 해둬야 backprop에 쓸 수 있으니 저장해야하고
-(2) dx의 backprop를 보면, (4),(3),(2) 에서 각각 x에 대한 미분 값들이 나오는데 모두 x의 변화에 대한 f의 변화량이므로 add 해주어야 한다. 따라서 backprop 코드를 짤 때 역시 `+=`을 사용하도록 하자.
+(2) dx의 backprop를 보면, (4),(3),(2) 에서 각각 x에 대한 미분 값들이 나오는데 모두 x의 변화에 대한 f의 변화량이므로 **add** 해주어야 한다. 따라서 backprop 코드를 짤 때 역시 **`+=`**을 사용하도록 하자.
 
 ___
 ## **7. 역방향 흐름의 패턴**
@@ -272,7 +279,7 @@ dX = W.T.dot(dD)
 
 D = W.dot(X) 인데 ``` dD / dW ```는 단순히 X가 와버리면 W - ( dD / dW ) 의 연산이 불가하다. 따라서 shape을 맞춰줘야하고, dD를 dW로 미분한다는 것 역시 dW 안에 있는 각각의 w0, w1, w2, ... ,w_(W.size-1) 에 대해 각각 다 미분해 준다는 얘기니까 dW = dD.dot(X.T)가 된다. 이 부분에 대해서 이해가 잘 안된다면 W = [3 x 2 ], X = [2 x 3] , D = W.dot(X)를 한 예시로 생각해서 각 dot의 결과(forward pass)가 무엇인지, 그것을 각각 w11, w12, w21, ... , w32 로 D 를 미분한 값들이 무엇인지 생각해보자. 
 
-####**추천 링크**
+#### **추천 링크**
 - [Vector, Matrix, and Tensor Derivatives](http://cs231n.stanford.edu/vecDerivs.pdf)
 - [행렬의 미분 - 데이터 사이언스 스쿨](https://datascienceschool.net/view-notebook/8595892721714eb68be24727b5323778/)
 
