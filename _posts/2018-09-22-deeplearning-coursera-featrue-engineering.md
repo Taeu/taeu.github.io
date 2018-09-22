@@ -266,7 +266,7 @@ ___
 **`Q.` 그럼 왜 Beam을 사용해야할까?**
 **`A.`** **Beam**은 training과 serving of model에서 **동일한 코드**를 사용할 수 있다.
 
-일단 **`BigQuery`**는 상당히 확장성이있고(scalable), 매우 빠르고, Google Cloud에서 관리할 수 있다. **`예를 들어`**, 100억 건의 텍스트를 가진 데이터셋을 전처리한다고 하자. 이 데이터 레코드 중 일부는 `bogus data`(가짜 데이터)가 발생할 수 있다. 이런 `bogus` data를 where문을 통해 걸러내고 feature를 select 할 수 있다. 
+일단 **`BigQuery`**는 상당히 확장성이있고(scalable), 매우 빠르고, Google Cloud에서 관리할 수 있다. **`예를 들어`**, 100억 건의 텍스트를 가진 데이터셋을 전처리한다고 하자. 이 데이터 레코드 중 일부는 `bogus data`(가짜 데이터)가 발생할 수 있다. 이런 `bogus` data를 where문을 통해 걸러내고 feature를 select 할 수 있다.
 
 ![19](https://user-images.githubusercontent.com/24144491/45911728-2ad50780-be52-11e8-82d0-2818ce332cc8.JPG)
 
@@ -278,7 +278,7 @@ ___
 
 ![21](https://user-images.githubusercontent.com/24144491/45911730-2b6d9e00-be52-11e8-9219-9f7324644653.JPG)
 
-구현해야할 함수들이 **`tensorflow`** API에 있다면 Thanks a lot! 이다. 아래코드는 위도를 특정 bucket을 잘라 categorical 변수처럼 만드는 코드다. 
+구현해야할 함수들이 **`tensorflow`** API에 있다면 Thanks a lot! 이다. 아래코드는 위도를 특정 bucket을 잘라 categorical 변수처럼 만드는 코드다.
 
 >[이와 관련한 버킷화의 좋은 코드 예제 - 종현님 블로그](http://excelsior-cjh.tistory.com/175)
 
@@ -337,6 +337,7 @@ ___
 ## feature cross 구현
 
 ![29](https://user-images.githubusercontent.com/24144491/45911737-2c9ecb00-be52-11e8-9419-481ed521473a.JPG)
+
 ![30](https://user-images.githubusercontent.com/24144491/45911738-2c9ecb00-be52-11e8-
 8b15-a0556ffdc116.JPG)
 
