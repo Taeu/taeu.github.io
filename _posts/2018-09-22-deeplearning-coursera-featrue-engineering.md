@@ -35,15 +35,17 @@ ___
 ___
 ## **목차**
 
-1. Introduction
-2. Raw Data to Features
-3. Preprocessing and Feature Creation
+**1. Introduction**
+**2. Raw Data to Features**
+**3. Preprocessing and Feature Creation**
 -- Preprocessing and Feature Creation
 -- Apache Beam and Cloud Dataflow
 -- Preprocessing with Cloud Dataprep
-4. Feature Crosses
-5. TF Transform
-6. Summary
+**4. Feature Crosses**
+**5. TF Transform**
+**6. Summary**
+
+
 ___
 
 
@@ -98,10 +100,9 @@ ___
 >>
  이 feature와 우리가 세운 가설간의 인과적인 관계가 있는지부터 생각해보면 된다. 왜 이 feature가 변할 때 우리가 예측하려고하는 값이 변할까를 물었을 때, 적절한 관계가 보이면 당연히 그 값을 예측하는 좋은 feature가 될 것이다. 하지만 관계가 보이지 않는다고해서 data를 임의로 버릴 수 없다. 그때는 각 데이터간의 상관관계(correlations)가 있는지 살펴본다음, 상관관계가 눈에 보인다고 판단 되면 그 feature를 일단 선택하자. 이 때, feature들과 예측할 label(y)값의 관계를 시각화하는 과정이 필요할 것이고, 이에 대해서는 추후에 kaggle에 대한 글을 포스팅할 때 확인해 볼 수 있을 것이다. ( kaggle에 들어가보자. 아무 project의 open kernel을 들어가면 거의 모든 사람들이 ML 모델을 구성하기 전 data 시각화를 하는 과정을 거치는 것을 볼 수 있다. 이때 데이터 시각화는 cor을 관찰하기 위함도 있지만 다른 몇몇의 과정들을 위해서이기도 하다 )
 >>
- 다음의 `예시`를 보자
+ 다음의 **`예시`**를 보자
 >>
-![6]((https://user-images.githubusercontent.com/24144491/45911715-2872ad80-be52-11e8-96b3-ec89461c6e5d.png)
->>
+![6](https://user-images.githubusercontent.com/24144491/45911715-2872ad80-be52-11e8-96b3-ec89461c6e5d.png)
 좋은 경주마를 예측하기 위해 다음과 같은 feature들이 있다고 하면 어떤 feature들을 선택해야할까?
 >>
 A와 B는 말이 잘 달리는지의 경주 실력과 확연한 관계가 있는 것으로 보인다.
@@ -176,7 +177,7 @@ D 같은 경우 등번호인데, 사실 어떤 등번호를 달고 나왔는지�
 
 >![10](https://user-images.githubusercontent.com/24144491/45911719-290b4400-be52-11e8-9aae-e9ba5eed108a.JPG)
 
->이런 categorical 변수들은 one-hot encoding을 해주자.
+>이런 **categorical** 변수들은 **one-hot encoding**을 해주자.
 
 >![11](https://user-images.githubusercontent.com/24144491/45911720-29a3da80-be52-11e8-9bdc-52a4e8556c36.JPG)
 
@@ -199,7 +200,7 @@ D 같은 경우 등번호인데, 사실 어떤 등번호를 달고 나왔는지�
 
 >마지막으로 missing data의 처리는 어떻게 해야할까? 이부분은 technical하게 rating 표시했는지 안했는지 체크하는 칸을 만들라고 하는데, 소비자가 rating을 안했건, 넣을때 누락되건 간에 결국 missing data는 이미 잃어버린 data이다. 따라서 이런 data는 특별히 다른 방법으로 처리를 해주어야할 것 같은데 이 부분에 대해서 추후의 공부가 필요할 것 같다. (missing data처리 관련, kaggle에서는 그냥 0값을 넣거나 avergae를 넣던데, missing data가 많으면 문제가 되겠지? 이 때 어떻게 처리하는지는 한 번 찾아보자. 아래의 참고하면 좋은 자료의 링크 참고하길 바란다)
 
-###**``` ML vs Statistics```**
+### **``` ML vs Statistics```**
 여기서는 ML model 구성시 data가 없는 상황과 그렇지 않은 상황에 대해 별도의 모델을 작성하는 것이 좋다고 한다. 
 - 통계는 제한된 데이터로 돌리고, ML은 충분히 많은 데이터로 작동
 - 통계는 outlier 버리지만, ML은 충분한 데이터를 찾았으므로 아웃라이어라도 같이 돌릴것(?)
