@@ -8,15 +8,17 @@ tags: cs231n dl optimization
 
 ## **목표** : Optimization(최적화) 이해
 
-## **목차**
-1. 소개
-2. 손실함수의 시각화
-3. 최적화(Optimization)
-4. 경사 계산(Gradient)
-5. 경사 하강(Gradient Descent)
-
 ## **공부 기간**
 2018.09.18.화 ~ 2018.09.19.수
+
+
+---
+## 참고 자료
+- [CS231n optimization 강의노트](http://cs231n.github.io/optimization-1/)
+- [CS231n linear-classify 강의노트](http://cs231n.github.io/linear-classify/)
+- [CS231n optimization 강의노트 한글 번역(AI-Korea)](http://aikorea.org/cs231n/optimization-1/)
+- [구글 머신러닝 단기집중과정-손실part](https://developers.google.com/machine-learning/crash-course/reducing-loss/gradient-descent?hl=ko)
+---
 
 ___
 
@@ -25,15 +27,14 @@ ___
 
  딥러닝에 대한 기본적인 지식을 쌓고자 Standford의 CS231n 강의를 듣기로 결심했다. 우선적으로 아래 cs231n 강의노트를 공부하고, 틈틈이 이동시간에 youtube에 upload된 cs231n에 해당되는 강의를 볼 생각이다. 강의노트 위주로 정리했고 강의를 보다가 드는 의문점이나, 추가로 찾아본 것들을 같이 적었다. 이해한 사항들을 좀 더 쉽게 풀이하는 과정에서 틀린 표현이 있을 수도 있으므로 참고하면서 읽어주시길 바란다.
 
----
 
-#### 참고 자료
-- [CS231n optimization 강의노트](http://cs231n.github.io/optimization-1/)
-- [CS231n linear-classify 강의노트](http://cs231n.github.io/linear-classify/)
-- [CS231n optimization 강의노트 한글 번역(AI-Korea)](http://aikorea.org/cs231n/optimization-1/)
-- [구글 머신러닝 단기집중과정-손실part](https://developers.google.com/machine-learning/crash-course/reducing-loss/gradient-descent?hl=ko)
+## **목차**
+1. 소개
+2. 손실함수의 시각화
+3. 최적화(Optimization)
+4. 경사 계산(Gradient)
+5. 경사 하강(Gradient Descent)
 
----
 
 ## **1. 소개 (Introduction)**
 
