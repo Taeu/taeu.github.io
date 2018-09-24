@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[CS231n] Backpropagation(역전파) 이해"
+title: "[CS231n] 역전파(Backpropagation) 이해"
 subtitle: "backpropagation, chain rule, patterns in gardient flow"
 categories: dl
 tags: cs231n
@@ -8,7 +8,7 @@ comments: true
 ---
 
 ## **목표**
-Backpropagation에 대한 직관적인 이해를 바탕으로 backprop의 과정과 세부요소들을 살펴보는 것
+역전파 (Backpropagation)에 대한 직관적인 이해를 바탕으로 backprop의 과정과 세부요소들을 살펴보는 것
 
 ## **공부기간**
 2018.09.20.목 ~ 2018.09.21.금

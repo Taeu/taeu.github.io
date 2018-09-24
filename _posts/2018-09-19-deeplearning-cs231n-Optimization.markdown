@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "[CS231n] Optimization : SGD"
+title:  "[CS231n] 최적화(Optimization) : SGD"
 subtitle:   "[CS231n] optimization landscapes, local search, learning rate, analytic, numerical gradient"
 categories: dl
 tags: cs231n dl optimization
 ---
 
-## **목표** : Optimization(최적화) 이해
+## **목표** : 최적화 이해 (Optimization)
 
 ## **공부 기간**
 2018.09.18.화 ~ 2018.09.19.수
