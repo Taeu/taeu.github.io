@@ -28,6 +28,8 @@ ___
 2. **뉴런(neuron) 모델링**
 3. **신경망 구조 (Neural Network Architectures)**
 4. **요약**
+
+
 ___
 
 ## **1. 소개**
@@ -87,24 +89,23 @@ w0(weight)는 학습이 가능하고 그것의 영향력을 조절(control)할 �
 input(x0) 
 -> synapse(w0 = weight) 
 -> dendrite(w0,x0) 				# dendrite는 두 값을 곱하는 함수
--> cell body(sum(wixi)+b) 		# 그렇게 곱해진 모든 값과 bias를 합함
--> axon(activation function(cell body output 값))
-						# axon역시 어떤 함수로 cell body의 결과값을 함수에 넣어 처리
+-> cell body(sum(wixi)+b) 			# 그렇게 곱해진 모든 값과 bias를 합함
+-> axon(activation function(cell body output 값))	# axon역시 어떤 함수로 cell body의 결과값을 함수에 넣어 처리
 -> output
 ```
 다시 다음과 같이 정리하면
-- x0 = siganl
-- s0 = synapse strength
-- dendrite = 입력된 두 값을 곱하는 함수
-- cell body = 모든 입력 값들을 더하는 함수
-- axon = 활성화 함수 (정의하기 나름)
+- **x0** = siganl
+- **s0** = synapse strength
+- **dendrite** = 입력된 두 값을 곱하는 함수
+- **cell body** = 모든 입력 값들을 더하는 함수
+- **axon** = 활성화 함수 (정의하기 나름)
 
 이런 과정들을 다음과 같은 코드로 짤 수 있다.
 ```python
 x = [1, 2, ... , 100] 		# 100개의 inputs
 w = [2, 3, ... , 101]		# 100개의 synaptic strengths
-bias = 0.02					# 적절한 bias
-for i in range(100) : (100개의 input이 있으면)
+bias = 0.02				# 적절한 bias
+for i in range(100) : 		
  d = dendrite(x[i],w[i])
  cellbody += d
 
@@ -162,13 +163,13 @@ sigmoid는 weight vanish 등의 문제가 발생하니 사용안하고 Leaky ReL
 - **leaky ReLU**
 - **Maxout** 
 
-#### **Leaky ReLU**
+### **Leaky ReLU**
 
 ReLU의 변형으로 
 
 ```
 f(x) =  ax  ,(x<0)
-		x   ,(x>=0) # where a is a small constant.
+	x   ,(x>=0) # where a is a small constant.
 ```
 
 ![2](https://user-images.githubusercontent.com/24144491/45941271-53a6f980-c018-11e8-9040-229e8cac3641.PNG)
@@ -176,14 +177,14 @@ f(x) =  ax  ,(x<0)
 
 왼쪽 그래프가 ReLU이고 오른쪽 그래프가 LeakyReLU이다. 이 activation function을 이용하면 항상 그런 것은 아니나, 대부분 성능이 좋다. 음의 값일 때도 미분값이 a로 살아있고, 미분할 때 역시 1 또는 a이니 엄청 빠르게 학습된다는 장점이 있다.
 
-#### **Maxout**
+### **Maxout**
 
 **Maxout_f = ```max((w1_T x + b1 , (w2)_T x+b2)```**
 - T는 transpose
 - ReLU에서는 w1 = 0 행렬, b1 =0인 경우임.
 - 2개씩의 parameter(weight , bias)들이 더 생기는 문제가 있음.
 
-> (사실 maxout을 쓴 경우를 아직 본적은 없어서 자주 쓰이는지는 모르겠다.)
+> (사실 maxout을 쓴 경우를 별로 본적이 없어서 자주 쓰이는지는 모르겠다.)
 
 
 ___
@@ -201,13 +202,13 @@ ___
 
 **Output Layer.** 마지막 output 층은 말 그대로 아웃풋, 결과값을 가진 층이다. 주로 class의 예측값이나, 관련 클래스일 확률 등의 real-value를 가진다.
 
-**Sizing neural networks.** 흔히 신경망의 size를 측정하는 척도로 **뉴런의 수**나 **parameter의 수(Weight size)**이다. (parameter는 뉴런과 뉴런의 연결된 부분에서 (weight || bias)가 있는 선이라고 생각하면 편하다)
+**Sizing neural networks.** 흔히 신경망의 size를 측정하는 척도로 **뉴런의 수**나 **parameter의 수(Weight size)**이다. (parameter는 뉴런과 뉴런의 연결된 부분에서 (weight or  bias)가 있는 선이라고 생각하면 편하다)
 
 > 위의 그림에서, 
 > `왼쪽`구조는 4+2 = 6개의 뉴런이 있고, [3x4] + [4x2] = 20 개의 weights와 4+2 = 6개의 biases. 총 26개의 parameters가 있다. `오른쪽`구조는 4+4+1 = 9개의 뉴런과, [3x4] + [4x4]+[4x1] = 32개의 weights와 4+4+1의 biases. 총 41개의 parameters가 있다.
 
 _
-> 딥러닝에서는 대략 10-20개의 층이 있는 신경망을 볼 수 있는데 거기서 나오는 parameters의 수는 어마어마하게 많을 것이다. 후에 parameter의 sharing(각 층과 층 사이 weight들 공유)을 통해 효율적으로 연결할 수 있는 구조를 살펴볼 것이다.
+> 딥러닝에서는 대략 10-20개의 층이 있는 신경망을 볼 수 있는데 거기서 나오는 parameters의 수는 어마어마하게 많을 것이다. 후에 **`parameter sharing`**(각 층과 층 사이 weight들 공유)을 통해 효율적으로 연결할 수 있는 구조를 살펴볼 것이다.
 
 ### **Example feed-forward computation**
 
@@ -234,7 +235,7 @@ h3 = np.dot(W3,h2) +b3			# h3 = output
 
 > 위를 더 자세히 표현하면 이런 구조이다.
 
-![4](https://user-images.githubusercontent.com/24144491/45941273-53a6f980-c018-11e8-9db1-535e049f63d5.png)
+![4](https://user-images.githubusercontent.com/24144491/45942453-63750c80-c01d-11e8-9762-6f52e27205dc.PNG)
 
 ### **Representational power**
 > Neural Networks work well in practice because they compactly express nice, smooth functions that fit well with the statistical properties of data we encounter in practice, and are also easy to learn using our optimization algorithms (e.g. gradient descent). Similarly, the fact that deeper networks (with multiple hidden layers) can work better than a single-hidden-layer networks is an empirical observation, despite the fact that their representational power is equal.
@@ -266,7 +267,7 @@ h3 = np.dot(W3,h2) +b3			# h3 = output
 
 - **과적합문제를 해결할 수 있는 많은 방법들이 있다. (L2, L1 Regularization, dropout, input noise etc.)**
 
-**실전에서는 hidden neuron을 줄이는 것보다 위의 방법들을 이용하는 것이 더 좋은 성능을 가져온다고 한다.** 그 이유로, 작은 네트워크 일수록 표현할 수 있는 부분이 적어지기 때문에 Loss 값 역시 비교적 적은 local minima(지역 최솟값 = 극솟값)를 가진다. 반대로 size가 큰 신경망의 경우 더 많은 local minima를 가지게 되는데, 이런 값들 중 실제(actual) 손실 측면에서보면 더 우수한 경우가 많다.(더 비슷한 값들) 실제로 학습된 결과들의 분산도 후자의 경우가 훨씬 더 낮다고 한다. 
+**실전에서는 hidden neuron을 줄이는 것보다 위의 방법들을 이용하는 것이 더 좋은 성능을 가져온다고 한다.** 그 이유로, 작은 네트워크 일수록 표현할 수 있는 부분이 적어지기 때문에 Loss 값 역시 비교적 적은 local minima(지역 최솟값 = 극솟값)를 가진다. 반대로 size가 큰 신경망의 경우 더 많은 local minima를 가지게 되는데, 이런 값들 중 실제(actual) 손실 측면에서보면 더 우수한 경우가 많다.(더 비슷한 값들) 실제로 학습된 결과들의 분산도 후자의 경우가 훨씬 더 작다고 한다. 
 
 ![6](https://user-images.githubusercontent.com/24144491/45941269-530e6300-c018-11e8-9074-c5e55792ebef.JPG)
 
