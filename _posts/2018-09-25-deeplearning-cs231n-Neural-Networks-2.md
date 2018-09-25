@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[CS231n] 강의노트 - 신경망 Part 2 (Neural Networks)"
+title: "[CS231n] 강의노트 : 신경망 Part 2 (Neural Networks)"
 subtitle: "cs231n 강의노트, data preprocessing, weight initialization, batch normalization, regularization, loss functions" 
 category: dl
 tags: cs231n dl
@@ -20,7 +20,6 @@ comments: true
 
 - [CS231n 강의노트 - 신경망 part 2](http://cs231n.github.io/neural-networks-2/)
 - [CS231n 강의노트 - 신경망 part 2 - 한글번역본 (AI Korea)](http://aikorea.org/cs231n/neural-networks-2-kr/)
-- **Python으로 배우는 Machine Learning**
 
 
 ___
@@ -68,6 +67,7 @@ cov = np.dot(X.T, X) / X.shape[0]
 > **`예를들어,`** X 의 size가 [3 x 5], feature가 5개인 3개의 데이터 값을 이루어진 X라는 input이 있다고 하자. X.T 의 size는 [5 x 3] 이고, (X.T).dot(X) 는 [5 x 5]를 가지게 되는데, X.T는 생각해보면 feature가 행이되고, 열이 각 데이터 값이다. 그럼 둘의 dot product 결과물은, X.T의 i번째 행의 데이터(i번째 feature의 모든 데이터 값)과 X의 j번째 열의 데이터(j번째의 feature의 모든 데이터 값)의 곱이다. 
 
 - 대각선 상의 값들 (diagonal of this matrix)는 각 feature 의 분산이다. (i, j) (단, i=j)
+
 > 위의 **`예시`**에서 X.T의 i번째 행( i번째 feature의 모든 값 )과 X의 j번째 열의 데이터(j번째의 feature의 모든 데이터 값)의 dot product인데 i = j이므로, 같은 feature들의 데이터들이 곱해지면서 제곱의 의미가 된다. **`(데이터값 - 평균) / (데이터 수) = 분산`**.
 
 - `cov` 행렬은 symmetic 이고, positive semi-definite 하다.
@@ -101,7 +101,8 @@ Xrot_reduced = np.dot(X, U[:, :100]) # Xrot_reduced -> [N x 100]
 ```python
 Xwhite = Xrot / np.sqrt(S + 1e-5)
 ```
-> 1e-5와 같은 작은 수가 아닌 **더 큰 수를 분모에 더하는 방식**으로 스무딩(smoothing)효과를 추가하여 이런 **노이즈 과장 현상을 완화**할 수 있다.
+
+> 1e-5와 같은 작은 수가 아닌 **더 큰 수를 분모에 더하는 방식**으로 스무딩(smoothing)효과를 추가하여 이런 **노이즈를 완화(?)**시킬 수 있다.
 
 ![1](https://user-images.githubusercontent.com/24144491/46000228-f166fb00-c0e2-11e8-9f88-b39e5980cc73.PNG)
 
@@ -109,10 +110,10 @@ Xwhite = Xrot / np.sqrt(S + 1e-5)
 
 ![2](https://user-images.githubusercontent.com/24144491/46000229-f166fb00-c0e2-11e8-9012-ec4034965745.PNG)
 
-왼쪽부터 1,2,3,4번 그림이라고 하자. **1번 : **49개의 이미지 데이터이다. **2번 : **3072개의 eignevetors 중 상위 144개의 아이젠 벡터이다. 3072개 차원의 벡터로 이미지를 다 표현하는 것보다 144개의 차원(eigenvectors, 새로운 features)로 이미지를 다시 표현할 수 있고, 이런 features들의 합으로 이미지를 표현하면 **3번**째 그림과 같다. **4번 : ** whitening 시킨 결과인데, 각 차원의 분산은 동일한 길이를 가진다.
+왼쪽부터 1,2,3,4번 그림이라고 하자. **1번 :** 49개의 이미지 데이터이다. **2번 :** 3072개의 eignevetors 중 상위 144개의 아이젠 벡터이다. 3072개 차원의 벡터로 이미지를 다 표현하는 것보다 144개의 차원(eigenvectors, 새로운 features)로 이미지를 다시 표현할 수 있고, 이런 features들의 합으로 이미지를 표현하면 **3번**째 그림과 같다. **4번 :** whitening 시킨 결과인데, 각 차원의 분산은 동일한 길이를 가진다.
 
 ### In practice.
- Convolutional Networks에서는 사용하는 경우가 거의 없다고 한다.. 하지만 zero-center 하는 이 정규화 과정은 매우 중요한 기법이고, 이 부분은 많이 사용한다고 한다. (아마 scale이랑 좀 더 빠른 계산을 위해서겠지?)
+ Convolutional Networks에서는 사용하는 경우가 거의 없다고 한다.. 하지만 zero-center 하는 이 정규화 과정은 매우 중요한 기법이고, 이 부분은 많이 사용한다고 한다.
 
 
 ### **Common pitfall.**
@@ -132,7 +133,7 @@ ___
  하지만 이 방법 역시 항상 좋은 성능을 보장하는 것은 아니다. 아주 작은 값으로 초기화 된 Weight의 경우 backprop 과정에서 미분값 또한 작은 값을 가지게 되고 느리게 혹은 local minima에 빠질 수 있는 문제가 있다.
  
 - **분산 보정 `1/sqrt(n)`**
-: `w = np.random.randn(n) / sqrt(n)` 
+: `w = np.random.randn(n) / sqrt(n)`, 
 var(w) = 2 / (n_inputlayer + n_outputlayer)로 초기화 할 것을 권장한다.
 `w = np.random.rand(n) * sqrt(2.0/n)`을 이용하여 가중치를 초기화하라고 하며 ReLU 뉴런이 사용되는 신경망에서 최근에 권장되고 있는 방식이라고 한다.
 
@@ -302,5 +303,5 @@ ___
 
 - 블로그에 댓글기능 추가해야 함
 - Xavier 관련해서 찾아보기
-- Batch Norm에 대해 더 찾아보기
+- Batch Norm에 대해 더 찾아보기 - Fully Connect Layer 관련해서도
 - 강의노트 정리 끝나면 강의도 보고 정리해서 글올리기
