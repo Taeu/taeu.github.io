@@ -5,5 +5,5 @@ slug: cs231n
 category: dl
 menu: false
 order: 1
-header-img: "/img/cs231n_logo.png"
+header-img: "/img/stanford_univ_logo.png"
 ---
