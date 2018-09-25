@@ -5,5 +5,5 @@ slug: ml1
 category: coursera
 menu: false
 order: 1
-header-img: "assets/img/coursera.png"
+header-img: "/img/coursera.png"
 ---

@@ -5,5 +5,5 @@ slug: cs231n
 category: dl
 menu: false
 order: 1
-header-img: "assets/img/cs231n_logo.png"
+header-img: "/img/cs231n_logo.png"
 ---
