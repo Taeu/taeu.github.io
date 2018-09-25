@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Coursera] Feature Engineering - Machine Learning with Tensorflow on Google Cloud Platform"
+title: "[Coursera] 데이터 전처리 : Feature Engineering - Machine Learning with Tensorflow on Google Cloud Platform"
 subtitle: "feature engineering, tensorflow, google cloud platform"
 categories: dl
 tags: coursera dl tf

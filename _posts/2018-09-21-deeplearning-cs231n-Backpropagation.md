@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[CS231n] 역전파(Backpropagation) 이해"
+title: "[CS231n] 강의노트 : 역전파(Backpropagation) 이해"
 subtitle: "backpropagation, chain rule, patterns in gardient flow"
 categories: dl
 tags: cs231n

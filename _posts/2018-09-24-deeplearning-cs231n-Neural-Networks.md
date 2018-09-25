@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[CS231n] 신경망 Part 1 (Neural Networks)"
+title: "[CS231n] 강의노트 : 신경망 Part 1 (Neural Networks)"
 subtitle: "neuron, activation function, neural net architecture, neural networks"
 category: dl
 tags: cs231n dl
