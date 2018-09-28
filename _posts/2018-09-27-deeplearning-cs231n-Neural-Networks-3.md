@@ -207,9 +207,14 @@ v = beta2 * v + (1-beta2)*(dx**2)
 vt = v / (1-beta2 **t)
 x -= learning_rate * mt / (np.sqrt(vt) + eps)
 ```
+<div class="fig figcenter fighighlight">
+  <img src="https://user-images.githubusercontent.com/24144491/46187650-979f4480-c31f-11e8-9813-ad539cdd3b4b.gif" width="48%" style="margin-right:10px;">
+  <img src="https://user-images.githubusercontent.com/24144491/46187651-979f4480-c31f-11e8-9068-99c606d546bb.gif" width="48%">
+  <div class="figcaption">
+    왼쪽에서 등고선 위에서 최적화 알고리즘들의 속도를 주목하라. 오른쪽그림은 목적함수에 안장점이 있을때 SGD의 단점을 보여준다.
+  </div>
+</div>
 
-<img src="https://user-images.githubusercontent.com/24144491/46187650-979f4480-c31f-11e8-9813-ad539cdd3b4b.gif" width="350"/> <img src="https://user-images.githubusercontent.com/24144491/46187651-979f4480-c31f-11e8-9068-99c606d546bb.gif" width="350"/> 
-- 왼쪽에서 등고선 위에서 최적화 알고리즘들의 속도를 주목하라. 오른쪽그림은 목적함수에 안장점이 있을때 SGD의 단점을 보여준다.
 
 ___ 
 ## 5. 하이퍼파라미터 최적화 (Hyperparameter Optimization)
