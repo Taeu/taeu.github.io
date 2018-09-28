@@ -72,6 +72,7 @@ ___
 **[10] Remember to turn off dropout/augmentations.** 기울기 검사(Gradient check)를 할 때, 드롭아웃이나 데이터 augmentation등의 효과를 배제해야한다. 그렇지 않으면 이게 더 큰 numerical gardient error를 가져올 수 있다. 
 
 **[11] Check only few dimensions.** 모든 차원을 다 검사하면 무리가 있으니, 특정 부분의 영역, 차원만 검사를 한다. (대신 그 부분의 모든 parameter에 대해 기울기를 체크해주어야한다.)
+
 ___
 ## 2. Sanity Checks Tips / Tricks
 
@@ -208,12 +209,13 @@ vt = v / (1-beta2 **t)
 x -= learning_rate * mt / (np.sqrt(vt) + eps)
 ```
 <div class="fig figcenter fighighlight">
-  <img src="https://user-images.githubusercontent.com/24144491/46187650-979f4480-c31f-11e8-9813-ad539cdd3b4b.gif" width="48%" style="margin-right:10px;">
-  <img src="https://user-images.githubusercontent.com/24144491/46187651-979f4480-c31f-11e8-9068-99c606d546bb.gif" width="48%">
+<img src="https://user-images.githubusercontent.com/24144491/46187650-979f4480-c31f-11e8-9813-ad539cdd3b4b.gif" width="48%"/> <img src="https://user-images.githubusercontent.com/24144491/46187651-979f4480-c31f-11e8-9068-99c606d546bb.gif" width="48%"/> 
+
   <div class="figcaption">
-    왼쪽에서 등고선 위에서 최적화 알고리즘들의 속도를 주목하라. 오른쪽그림은 목적함수에 안장점이 있을때 SGD의 단점을 보여준다.
+    **왼쪽**에서 등고선 위에서 최적화 알고리즘들의 속도를 주목하라. **오른쪽그림**은 목적함수에 안장점이 있을때 SGD의 단점을 보여준다.
   </div>
 </div>
+
 
 
 ___ 
@@ -232,6 +234,7 @@ ___
 **[3] 검증시 단일 검증집합.** 적당한 크기의 검증 집합을 설정해 한 번만 검증하는 것이 더 쉽게 구현할 수 있을 것.
 
 
+___
 
 ## 6. 평가 (Evaluation, Model Ensembles)
 
@@ -242,6 +245,7 @@ ___
 - **한 모형에서 다른 체크포인트들을 (Different checkpoints of a single model).** 만약 훈련이 매우 값비싸면, 어떤 사람들은 단일한 네트워크의 체크포인트들을 (이를테면 매 에폭 후) 앙상블하여 제한적인 성공을 거둔 바 있음을 기억해 두라. 명백하게 이 방법은 다양성이 떨어지지만, 실전에서는 합리적으로 잘 작동할 수 있다. 이 방법은 매우 간편하고 저렴하다는 것이 장점이다.
 - **훈련 동안의 모수값들에 평균을 취하기 (Running average of parameters during training).** 훈련 동안 (시간에 따른) 웨이트 값들의 지수 하강 합(exponentially decaying sum)을 저장하는 제 2의 네트워크를 만들면 언제나 몇 퍼센트의 이득을 값싸게 취할 수 있다. 이 방식으로 당신은 최근 몇 iteration 동안의 네트워크에 평균을 취한다고 생각할 수도 있다. 마지막 몇 스텝 동안의 웨이트값들을 이렇게 “안정화” 시킴으로써 당신은 언제나 더 나은 검증 오차를 얻을 수 있다. 거친 직관으로 생각하자면, 목적함수는 볼(bowl)-모양이고 당신의 네트워크는 극값(mode) 주변을 맴돌 것이므로, 평균을 취하면 극값에 더 가까운 어딘가에 다다를 기회가 더 많아질 것이다.
 
+___
 
 ## 7. 요약 (Summary)
 
@@ -257,6 +261,7 @@ ___
 - 하이퍼파라미터는 그리드 검색이 아닌 랜덤 검색으로 튜닝해라. 처음에는 생긴 범위에서 탐색하다가 (넓은 초모수 범위, 1-5 에폭 정도만 학습), 점점 촘촘하게 검색하라 (좁은 범위, 더 많은 에폭에서 학습).
 - 추가적인 개선을 위하여 모델 앙상블(model ensemble)을 만들어라.
 
+___
 
 # 마무리
 
