@@ -269,7 +269,7 @@ V[3,3,1] = np.sum(X[6:11,6:11,:]* W1) + b1
 
 이 부분이 잘 이해가 가지 않는다면 [다음 링크](https://stats.stackexchange.com/questions/263349/how-to-convert-fully-connected-layer-into-convolutional-layer)를 참고하면 좋을 것이다.
 ___
-## ConvNet Architectures
+## 3. CNN 구조 (ConvNet Architectures)
 
 컨볼루셔널 네트워크의 구조는 Conv 레이어, Pool 레이어, FC 레이어 그리고 actiavation fucntion의 조합으로 이루어져 있다.
 
