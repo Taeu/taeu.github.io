@@ -19,7 +19,7 @@
       {{ content }}
 
       {% if site.disqus_shortname and page.layout == 'post' %}
-        {% include comments.html %}
+        {% include disqus_comments.html %}
       {% endif %}
 
       {% include footer.html %}
