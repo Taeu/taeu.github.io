@@ -2,7 +2,7 @@
 layout: post
 title: "[논문] YOLO v1 리뷰 - 02" 
 subtitle: "논문, paper, yolo, yolo-v1"
-category: paper
+category: dl
 tags: dl paper
 comments: true
 ---
