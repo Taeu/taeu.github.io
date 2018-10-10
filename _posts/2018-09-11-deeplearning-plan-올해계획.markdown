@@ -10,6 +10,8 @@ categories: dl
 
 tags: plan
 
+comments: true
+
 ---
 
 
