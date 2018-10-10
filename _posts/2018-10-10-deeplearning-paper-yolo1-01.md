@@ -16,10 +16,12 @@ comments: true
 ![2](https://user-images.githubusercontent.com/24144491/46718831-6cb1da80-cca7-11e8-866b-56e8fb3fac13.png)
 
 ___
-- **[0. Background]()**
-- **[1. Introduction]()**
-- **[2. Unified Detection]()**
-- **[3. Conclusion]()**
+- **[0. Background 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-01/)**
+- **[1. Introduction 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-01/)**
+- **[2. Unified Detection 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-02/)**
+- **[3. Conclusion 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-03/)**
+
+
 ___
 
 
