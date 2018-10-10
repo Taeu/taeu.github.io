@@ -74,7 +74,7 @@ ___
 
 # Next.
 
-YOLO가 구체적으로 어떤 네트워크를 가지고 어떤 loss function을 설정하여 Loss를 최적화하는 학습과정을 거치는지에 대해서는 [다음 글]()에서 구체적으로 살펴볼 것이다.
+YOLO가 구체적으로 어떤 네트워크를 가지고 어떤 loss function을 설정하여 Loss를 최적화하는 학습과정을 거치는지에 대해서는 [다음 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-02/)에서 구체적으로 살펴볼 것이다.
 
 ___
 

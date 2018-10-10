@@ -197,7 +197,7 @@ IOU(겹치는부분)이 0.5보다 크지 않으면 놔둔다.
 ___
 # Next
 
-다음은 yolo의 성능과 한계에 대한 [3. Conclusion]() 내용을 살펴볼 것이다.
+다음은 yolo의 성능과 한계에 대한 [3. Conclusion](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-03/) 내용을 살펴볼 것이다.
 
 ___
 ## 참고자료
