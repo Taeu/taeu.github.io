@@ -7,19 +7,22 @@ tags: dl paper
 comments: true
 ---
 
+
 # YOLO v1 : You Only Look Once
 
-![1]()
+![1](https://user-images.githubusercontent.com/24144491/46718830-6c194400-cca7-11e8-8c5f-5fd3f61c123e.png)
 
 **Image Detection**의 hot한 여정의 시작인 **YOLO v1** 논문을 리뷰하고자 한다. 이미 YOLO에 대한 많은 리뷰 자료들이 있지만 일부 오류들과 전체적인 과정을 순차적으로 자세히 설명한 자료는 없었다. 딥러닝의 전체적인 프로세스를 순차적으로 따라가는 것은 논문 이해와 더불어 코드를 이해하는 가장 정확하고 쉬운 길이다. 따라서 YOLO 논문을 딥러닝 모델 구성부터 학습 및 테스트까지 전체적인 프로세스를 순차적으로 정리하는 것이 의미가 있을 것이라 판단하여 이 글을 작성하게 되었다. 구체적인 YOLO v1 리뷰 글의 목차는 다음과 같다. 
 
-![2]()
+![2](https://user-images.githubusercontent.com/24144491/46718831-6cb1da80-cca7-11e8-866b-56e8fb3fac13.png)
 
 ___
-- **[0. Background]()**
-- **[1. Introduction]()**
-- **[2. Unified Detection]()**
-- **[3. Conclusion]()**
+- **[0. Background 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-01/)**
+- **[1. Introduction 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-01/)**
+- **[2. Unified Detection 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-02/)**
+- **[3. Conclusion 글](https://taeu.github.io/paper/2018/10/10/deeplearning-paper-yolo1-03/)**
+
+
 ___
 
 
