@@ -16,11 +16,14 @@ comments: true
 
 ![2](https://user-images.githubusercontent.com/24144491/46718831-6cb1da80-cca7-11e8-866b-56e8fb3fac13.png)
 
-____
-- **[0. Background 글](https://taeu.github.io/dl/2018/10/10/deeplearning-paper-yolo1-01/)**
-- **[1. Introduction 글](https://taeu.github.io/dl/2018/10/10/deeplearning-paper-yolo1-01/)**
-- **[2. Unified Detection 글](https://taeu.github.io/dl/2018/10/10/deeplearning-paper-yolo1-02/)**
-- **[3. Conclusion 글](https://taeu.github.io/dl/2018/10/10/deeplearning-paper-yolo1-03/)**
+___
+- **[0. Background 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-01/)**
+- **[1. Introduction 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-01/)**
+- **[2. Unified Detection 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-02/)**
+- **[3. Conclusion 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-03/)**
+
+
+___
 
 
 
@@ -198,7 +201,7 @@ IOU(겹치는부분)이 0.5보다 크지 않으면 놔둔다.
 ___
 # Next
 
-다음은 yolo의 성능과 한계에 대한 [3. Conclusion](https://taeu.github.io/dl/2018/10/10/deeplearning-paper-yolo1-03/) 내용을 살펴볼 것이다.
+다음은 yolo의 성능과 한계에 대한 [3. Conclusion](https://taeu.github.io/dl/deeplearning-paper-yolo1-03/) 내용을 살펴볼 것이다.
 
 ___
 ## 참고자료
