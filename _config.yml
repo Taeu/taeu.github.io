@@ -1,36 +1,36 @@
-title: CHAYEOI BLOG
-email: y2oniary@gmail.com
+title: Taeu
+email: specia1ktu@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  CHAYEOI 기술 블로그
+  Taeu's blog
 permalink: '/:categories/:title/' # default '/:title/'
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://chayeoi.com" # the base hostname & protocol for your site, e.g. http://example.com
-
+url: "https://taeu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+# copy right url:                 https://chayeoi.com
 # Author settings
 author: Chanyeon Kim # add your name
-author-pic: chayeoi-profile.jpg
-about-author: 실력은 지식의 총합이 아니다. 실력은 고통의 총합이다.
+author-pic: taeu.png
+about-author: Life is balance
 
 # Contact links
-email: y2oniary@gmail.com # Add your Email address
-phone: 010-2650-5090 # Add your Phone number
-website: chayeoi.creatorlink.net # Add your website, do not add http://
-repo: y2oniary
+email: specia1ktu@gmail.com # Add your Email address
+phone: 010-2601-5865 # Add your Phone number
+#website:  # Add your website, do not add http://
+#repo: #
 # linkedin: # Add your Linkedin handle
-github: chayeoi # Add your Github handle
+github: taeu # Add your Github handle
 # twitter: '@artemsheludko_' # Add your Twitter handle
-facebook: chayeoi # Add your Facebook handle
-instagram: chayeoi # Add your Instagram handle
+facebook: taeu96 # Add your Facebook handle
+#instagram:  # Add your Instagram handle ,  # 인스타 나중에 만들어야지
 # pinterest: # Add your Pinterest handle
 
 # Newsletter
 mailchimp: # Add your MailChimp form identifier.
 
 # Disqus
-disqus_identifier: y2oniary # Add your discus identifier
+disqus_identifier: taeu-2 # Add your discus identifier (short name)
 
 # Tracker
-analytics: # Google Analytics
+analytics: UA-92346434-1 # Google Analytics
 
 # # Paginate
 # paginate: 6
