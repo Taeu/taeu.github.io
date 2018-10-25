@@ -1,35 +1,25 @@
 - title: Home
   url: /
   desc: Home
-- title : Tech
-  desc: Tech
+- title : Deep Learning
+  desc: Deep Learning
   subs:
     -
-      title: Basic JS
-      url: /js
-      desc: Basic Javascript
+      title: Paper
+      url: /paper
+      desc: Related Paper Review
     -
-      title: Advanced JS
-      url: /advanced-js
-      desc: Advanced JS
+      title: Coursera
+      url: /coursera
+      desc: coursera course
     -
-      title: React
-      url: /react
-      desc: React
+      title: CS231n
+      url: /cs231n
+      desc: cs231n Review
     -
-      title: Vue
-      url: /vue
-      desc: Vue
-- title: Study
-  desc: Study log
-  subs:
-    -
-      title: Today I Learned
-      url: /til
-      desc: Today I Learned
-    - title: Today I Found Out
-      url: /tifo
-      title: Today I Found Out
+      title: etc
+      url: /etc
+      desc: etc
 - title: Daily
   url: /daily
   desc: Daily log
