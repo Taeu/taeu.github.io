@@ -1,3 +1,1 @@
-## 소개
-
-안녕하세요 이제 블로그를 시작한 Taeu 입니다.
+# Oh My Charlie Blog
