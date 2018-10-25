@@ -5,6 +5,7 @@ subtitle: "논문, paper, yolo, yolo-v1"
 category: dl
 tags: dl paper
 comments: true
+img: yolo-v1.jpg
 ---
 
 # YOLO v1 : You Only Look Once
