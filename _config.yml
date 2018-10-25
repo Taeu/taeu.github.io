@@ -7,7 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://taeu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # copy right url:                 https://chayeoi.com
 # Author settings
-author: Chanyeon Kim # add your name
+author: Taeu Kim # add your name
 author-pic: taeu.png
 about-author: Life is balance
 
