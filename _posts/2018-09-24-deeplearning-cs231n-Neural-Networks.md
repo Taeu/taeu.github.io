@@ -2,37 +2,41 @@
 layout: post
 title: "[CS231n] 강의노트 : 신경망 Part 1 (Neural Networks)"
 subtitle: "neuron, activation function, neural net architecture, neural networks"
-category: dl
+categories: cs231n
 tags: cs231n dl
+img: stanford.jpg
 comments: true
 ---
 
 ## **목표**
+---
 > **' 신경망 (Neural Network) '** 의 구조 이해
 
 ## **공부기간**
+---
 > 2018.09.24.월 
 
 ## **참고자료**
-
+---
 - [CS231n 강의노트 Neural Networks part 1](http://cs231n.github.io/neural-networks-1/)
 - [CS231n 강의노트 한글 번역(AI-Korea)](http://aikorea.org/cs231n/neural-networks-1/)
 
 
-___
+
 # 본문
+---
  오늘은 드디어 **hot**한 **신경망(Neural Networks)**에 대해서 알아볼 것이다. 글을 해석하는 과정에서 오류가 있을 수 있거나 주관적인 견해가 들어갈 수 있다. 이를 참고하면서 읽어주길 바란다.
  
 ## 목차
+---
 1. **소개**
 2. **뉴런(neuron) 모델링**
 3. **신경망 구조 (Neural Network Architectures)**
 4. **요약**
 
 
-___
-
 ## **1. 소개**
+---
 
 ### **`CIFAR-10`**의 경우
  이 **score function**( = **`s = Wx`** )를 사용해 각 카테고리(종류)마다 다른 값(Score)을 계산했다. 
@@ -62,9 +66,10 @@ ___
 
 글과 식으로 신경망(Neural Networks)를 설명하는데는 한계가 있으니 시각화된 모델과 추가된 설명으로 천천히 구조를 살펴보기로 하자.
 
-___
 
 ## **2. 뉴런(neuron) 모델링**
+---
+
  - **생물학에서 얻은 동기와 연결고리** (Biological Motivation and connections)
  - **선형 분류기와 같은 하나의 뉴런** (Single Neuron as a linear classifier)
  - **활성화 함수** (activation function)
@@ -74,6 +79,7 @@ ___
 뇌의 기본적인 계산 유닛은 **뉴런(Neuron)**이다. 약 86십억개의 뉴런이 있으며 10의 14제곱 ~ 10의 15제곱 개의 **시냅스(Synapses)**들이 있다. 아래의 다이어그램을 보자.
 
 ![1](https://user-images.githubusercontent.com/24144491/45941270-530e6300-c018-11e8-8c3e-2d2daf04fb4a.PNG)
+
 - 왼쪽은 뉴런의 그림이고 오른쪽은 이를 표현한 대표적인 수학적 모델이다.
 
 먼저 뉴런 그림부터 보자. 뉴런은 그것의 **dendrites**로 부터 input을 받아들이고, 그것의 **axon**을 통해 output을 내보낸다. 그 axon은 **synapse**를 통해 다른 뉴런의 dendrities와 연결된다. 
@@ -93,6 +99,7 @@ input(x0)
 -> axon(activation function(cell body output 값))	# axon역시 어떤 함수로 cell body의 결과값을 함수에 넣어 처리
 -> output
 ```
+
 다시 다음과 같이 정리하면
 - **x0** = siganl
 - **s0** = synapse strength
@@ -101,6 +108,7 @@ input(x0)
 - **axon** = 활성화 함수 (정의하기 나름)
 
 이런 과정들을 다음과 같은 코드로 짤 수 있다.
+
 ```python
 x = [1, 2, ... , 100] 		# 100개의 inputs
 w = [2, 3, ... , 101]		# 100개의 synaptic strengths
@@ -187,8 +195,8 @@ f(x) =  ax  ,(x<0)
 > (사실 maxout을 쓴 경우를 별로 본적이 없어서 자주 쓰이는지는 모르겠다.)
 
 
-___
 ## **3. 신경망 (Neural Networks) 구조**
+---
 
 ### **Layer-wise organization**
 
@@ -207,7 +215,6 @@ ___
 > 위의 그림에서, 
 > `왼쪽`구조는 4+2 = 6개의 뉴런이 있고, [3x4] + [4x2] = 20 개의 weights와 4+2 = 6개의 biases. 총 26개의 parameters가 있다. `오른쪽`구조는 4+4+1 = 9개의 뉴런과, [3x4] + [4x4]+[4x1] = 32개의 weights와 4+4+1의 biases. 총 41개의 parameters가 있다.
 
-_
 > 딥러닝에서는 대략 10-20개의 층이 있는 신경망을 볼 수 있는데 거기서 나오는 parameters의 수는 어마어마하게 많을 것이다. 후에 **`parameter sharing`**(각 층과 층 사이 weight들 공유)을 통해 효율적으로 연결할 수 있는 구조를 살펴볼 것이다.
 
 ### **Example feed-forward computation**
@@ -273,14 +280,17 @@ h3 = np.dot(W3,h2) +b3			# h3 = output
 
 - 여기서의 람다는 정규화의 hyperparameter로 람다 값이 높으면 높을수록 더 간단한 모델로 바뀌게 된다.
 
-___
+
 ## **4. 요약**
+---
+
 - 뉴런(Neuron)의 구조와 그것의 수학적 모델을 알아봄
 - 신경망(Neural Network)의 구조를 알아봄
 - 활성화함수(Activation function)을 알아봄
 
-___
+
 # 마무리
+---
 
 - **신경망(Neural Network)**에 관한 시리즈는 총 3파트이다. (매일 한 파트씩 요약하는 것이 목표, 추석이라 새벽이나 자투리시간을 최대한 활용하여)
 - 신경망, CNN까지 다 정리하면 딥러닝의 일련의 과정들을 **한 그림** 안에 표현해보도록 하자.
