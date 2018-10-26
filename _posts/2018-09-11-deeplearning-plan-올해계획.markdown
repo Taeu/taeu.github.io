@@ -6,9 +6,9 @@ title:  "[DL] 올해 공부 계획"
 
 subtitle:   "[DL] 딥러닝 공부 계획"
 
-categories: dl
+categories: etc
 
-tags: dl, plan
+tags: dl plan
 
 comments: true
 
