@@ -5,6 +5,7 @@ subtitle:   "[CS231n] optimization landscapes, local search, learning rate, anal
 categories: cs231n
 tags: cs231n dl optimization
 comments: true
+img: stanford-univ.jpg
 ---
 
 ## **목표** : 최적화 이해 (Optimization)
