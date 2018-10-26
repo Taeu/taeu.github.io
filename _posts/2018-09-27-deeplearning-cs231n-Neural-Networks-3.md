@@ -5,7 +5,7 @@ subtitle: "cs231n 강의노트, 학습, 경사 체크, 최적화 알고리즘, �
 categories: cs231n
 tags: cs231n dl
 
-img: stanford_univ_logo.png
+img: stanford-univ.jpg
 comments: true
 
 ---
