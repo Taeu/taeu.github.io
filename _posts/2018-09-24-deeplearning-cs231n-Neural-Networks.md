@@ -4,20 +4,17 @@ title: "[CS231n] 강의노트 : 신경망 Part 1 (Neural Networks)"
 subtitle: "neuron, activation function, neural net architecture, neural networks"
 categories: cs231n
 tags: cs231n dl
-img: stanford.jpg
+img: stanford-univ.jpg
 comments: true
 ---
 
 ## **목표**
----
 > **' 신경망 (Neural Network) '** 의 구조 이해
 
 ## **공부기간**
----
 > 2018.09.24.월 
 
 ## **참고자료**
----
 - [CS231n 강의노트 Neural Networks part 1](http://cs231n.github.io/neural-networks-1/)
 - [CS231n 강의노트 한글 번역(AI-Korea)](http://aikorea.org/cs231n/neural-networks-1/)
 
@@ -28,7 +25,6 @@ comments: true
  오늘은 드디어 **hot**한 **신경망(Neural Networks)**에 대해서 알아볼 것이다. 글을 해석하는 과정에서 오류가 있을 수 있거나 주관적인 견해가 들어갈 수 있다. 이를 참고하면서 읽어주길 바란다.
  
 ## 목차
----
 1. **소개**
 2. **뉴런(neuron) 모델링**
 3. **신경망 구조 (Neural Network Architectures)**
