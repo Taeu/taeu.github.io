@@ -4,7 +4,7 @@ title: "[CS231n] 강의노트 : 신경망 Part 2 (Neural Networks)"
 subtitle: "cs231n 강의노트, data preprocessing, weight initialization, batch normalization, regularization, loss functions" 
 categories: cs231n
 tags: cs231n dl
-img: stanford_univ_logo.png
+img: stanford-univ.jpg
 
 comments: true
 ---
