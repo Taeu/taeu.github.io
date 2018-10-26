@@ -5,19 +5,17 @@ subtitle:   "[CS231n] optimization landscapes, local search, learning rate, anal
 categories: cs231n
 tags: cs231n dl optimization
 comments: true
-img: stanford-univ.jpg
+img: stanford_univ_logo.png
 ---
 
 ## **목표** : 최적화 이해 (Optimization)
 
 ## **공부 기간**
----
 2018.09.18.화 ~ 2018.09.19.수
 
 
 
 ## 참고 자료
----
 - [CS231n optimization 강의노트](http://cs231n.github.io/optimization-1/)
 - [CS231n linear-classify 강의노트](http://cs231n.github.io/linear-classify/)
 - [CS231n optimization 강의노트 한글 번역(AI-Korea)](http://aikorea.org/cs231n/optimization-1/)
@@ -33,7 +31,6 @@ img: stanford-univ.jpg
 
 
 ## **목차**
----
 1. 소개
 2. 손실함수의 시각화
 3. 최적화(Optimization)
