@@ -10,14 +10,14 @@ comments: true
 
 
 ## 목표
+
 Coursera의 **"ML with Tensorflow on GCP"**의 강좌 4 - **Feature Engineering** 이해 및 정리
 
 ## **공부기간**
----
 2018.09.22.토
 
 ## **참고자료**
----
+
 [Coursera - Machine Learning with Tensorflow on Google Cloud Platform -강좌4](https://www.coursera.org/specializations/machine-learning-tensorflow-gcp)
 
 
@@ -35,7 +35,6 @@ Coursera의 **"ML with Tensorflow on GCP"**의 강좌 4 - **Feature Engineering*
 
 
 ## **목차**
----
 
 1] **Introduction**
 2] **Raw Data to Features**
