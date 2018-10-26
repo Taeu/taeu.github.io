@@ -4,24 +4,22 @@ title: "[CS231n] 강의노트 : 신경망 Part3 (Neural Networks)"
 subtitle: "cs231n 강의노트, 학습, 경사 체크, 최적화 알고리즘, 하이퍼파라미터 최적화, 앙상블"
 categories: cs231n
 tags: cs231n dl
-img: stanford.jpg
+
+img: stanford_univ_logo.png
 comments: true
 
 ---
 
 ## 목표
----
 
 이번 주제들은 신경망에서 생각해봐야할 것들, 동적인 부분들을 다룬다. Gradient check 부터, 학습 중 주의애햐할 과정들, parameter update 알고리즘, 하이퍼파라메타 설정과 끝으로 Model Ensemble까지 살펴볼 것이다. 
 
 ## 공부기간
----
 
 2019.2018.09.26.수 ~ 2018.09.28.금 
 30 ~ 40분씩
 
 ## 참고자료
----
 
 - [CS231n 강의노트 Neural Networks 3](http://cs231n.github.io/neural-networks-3/)
 - [CS231n 강의노트 Neural Networks 3 - 한글번역 (AI-Korea)](http://aikorea.org/cs231n/neural-networks-3/)
@@ -34,7 +32,6 @@ comments: true
 
 
 ## 목차
----
 
 1. 기울기 검사(Gradient check)
 2. Sanity Check
