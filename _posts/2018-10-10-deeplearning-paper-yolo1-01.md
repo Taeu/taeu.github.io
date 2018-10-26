@@ -2,13 +2,14 @@
 layout: post
 title: "[논문] YOLO v1 리뷰 - 01" 
 subtitle: "논문, paper, yolo, yolo-v1"
-category: dl
+category: paper
 tags: dl paper
 comments: true
 img: yolo-v1.jpg
 ---
 
 # YOLO v1 : You Only Look Once
+---
 
 ![1](https://user-images.githubusercontent.com/24144491/46718830-6c194400-cca7-11e8-8c5f-5fd3f61c123e.png)
 
@@ -16,21 +17,19 @@ img: yolo-v1.jpg
 
 ![2](https://user-images.githubusercontent.com/24144491/46718831-6cb1da80-cca7-11e8-866b-56e8fb3fac13.png)
 
-___
+---
 - **[0. Background 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-01/)**
 - **[1. Introduction 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-01/)**
 - **[2. Unified Detection 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-02/)**
 - **[3. Conclusion 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-03/)**
-
-
-___
+---
 
 
 가독성을 위해 각 파트별 글을 따로 포스팅했다. 이번 글에서 다룰 파트는 **0. Background**와 **1. Introduction**이다.
 
-___
 
 ## 0. Background
+---
 
 YOLO 리뷰에 앞서 Image Detection이 왜 새로운 연구주제로 떠올랐는지부터 살펴볼 필요가 있다.
 
@@ -55,9 +54,9 @@ one stage method란 한 번만에 image detection을 할 수 있는 알고리즘
 
 ![8](https://user-images.githubusercontent.com/24144491/46718837-6d4a7100-cca7-11e8-93bc-f42a8a3b0183.png)
 
-___
 
 ## 1. Introduction
+---
 
 ![9](https://user-images.githubusercontent.com/24144491/46718838-6de30780-cca7-11e8-8532-270ccc801421.png)
 
@@ -71,15 +70,16 @@ ___
 - (2) 다른 알고리즘과 비슷한 정확도를 가진다.
 - (3) 다른 도메인에서 좋은 성능을 보인다.
 
-___
 
 # Next.
+---
 
 YOLO가 구체적으로 어떤 네트워크를 가지고 어떤 loss function을 설정하여 Loss를 최적화하는 학습과정을 거치는지에 대해서는 [다음 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-02/)에서 구체적으로 살펴볼 것이다.
 
-___
 
 ## 참고자료
+---
+
 - [object detection paper list](https://github.com/hoya012/deep_learning_object_detection)
 - [yolo v3 paper](https://pjreddie.com/media/files/papers/YOLOv3.pdf)
 - [yolo site](https://pjreddie.com/darknet/yolo/)
