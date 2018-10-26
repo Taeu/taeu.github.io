@@ -2,33 +2,39 @@
 layout: post
 title: "[CS231n] 강의노트 : 신경망 Part 2 (Neural Networks)"
 subtitle: "cs231n 강의노트, data preprocessing, weight initialization, batch normalization, regularization, loss functions" 
-category: dl
+categories: cs231n
 tags: cs231n dl
+img: stanford.jpg
 
 comments: true
 ---
 
 ## 목표
+---
 
 > **데이터 전처리, 가중치 초기화, 배치 정규화, 정규화, 손실함수의 이해**
 
 ## 공부기간
+---
 
 > **2018.09.25.화**
 
 ## 참고자료
+---
 
 - [CS231n 강의노트 - 신경망 part 2](http://cs231n.github.io/neural-networks-2/)
 - [CS231n 강의노트 - 신경망 part 2 - 한글번역본 (AI Korea)](http://aikorea.org/cs231n/neural-networks-2-kr/)
 
 
-___
+
 # 본문
+---
 
  이번 장에서는 신경망 모델에 넣을 데이터를 전처리하는 과정(Data Preprocessing), 신경망 모델에서 초기 가중치를 초기화하는 방법, 배치를 정규화하는 방법, 모델을 정규화하는 방법 그리고 손실함수를 어떻게 구성할지에 대해서 자세히 다룰 것이다.
 
-___
+
 ## 목차
+---
 
 1. **데이터 전처리** (Data Preprocessing)
 2. **가중치 초기화** (Weight Initialization)
@@ -37,8 +43,9 @@ ___
 5. **손실 함수** (Loss function)
 6. **요약** (Summary)
 
-___
+
 ## **1. 데이터 전처리 (Data Preprocessing)**
+---
 
 데이터 전처리에 앞서 기본적인 `X` (inputs = N 개의 features)의 형태는 [N x D] 의 사이즈로 구성된다. (N은 데이터의 수, D는 차원 = features의 수)
 
@@ -121,8 +128,10 @@ Xwhite = Xrot / np.sqrt(S + 1e-5)
 - 그것을 test, validation dataset에 적용해야한다.
 > 여기에 대한 이유는 조금 더 찾아봐야 할 것 같다.
 
-___
+
 ## **2. 가중치 초기화 (Weight Initialization)**
+---
+
  이번 절에서는 학습시 가중치를 적절히 초기화하는 방법에 대해서 알아보자
 
 - **0으로 초기화하지 말것**
@@ -146,8 +155,9 @@ var(w) = 2 / (n_inputlayer + n_outputlayer)로 초기화 할 것을 권장한다
 - **실전 'In parctice'**
 : ` w = np.random.randn(n) + sqrt(2.0/n)` 으로 초기화하는 것이 요즘 추세라고 함.
 
-___
+
 ## **3. 배치 정규화 (Batch Normalization)**
+---
 
 - [**Batch Normalization**](https://arxiv.org/abs/1502.03167)
 
@@ -155,8 +165,9 @@ ___
 > 요즘은 fully connected layer을 쓰지 않는다는데, 관련된 자료를 더 찾아봐야겠다.
 
 
-___
+
 ## **4. 정규화 (Regularization)**
+---
 
 **L2 정규화.** 가장 흔히 쓰이는 유형으로 모든 weight의 제곱값의 합을 이용한다. 그리고 적절한 정규화율인 **λ(lambda)**를 곱해주면 끝. 또 미분을 편하게 하려고 앞의 1/2를 곱해주어 `(1/2) λ w^2`의 정규화 term이 완성된다.
 >The L2 regularization has the intuitive interpretation of heavily penalizing peaky weight vectors and preferring diffuse weight vectors. (L2 reguralization은 큰 값이 많이 존재하는 가중치에 제약을 주고, 가중치 값을 가능한 널리 퍼지도록 하는 효과를 주는 것으로 볼 수 있다)
@@ -240,8 +251,10 @@ def predict(X):
 
 **실전.** 하나의 전역적인 L2 정규화 텀을 사용하고 모든 레이어 다음에 dropout을 결합하는 경우가 일반적이다. dropout의 확률 p의 default는 0.5 이지만 검증때 조금씩 바꿔볼 수도 있다.
 
-___
+
 ## **5. 손실 함수 (Loss function)**
+---
+
 일반적인 손실함수를 구성하는 요소는 크게 2가지다.
 - **(1) Data Loss** 
 : 실제 값(우리가 예측해야되는 값=truth value)과 예측한 값(모델로부터 나온 결과값=predicted value)간의 차이 (error, loss)
@@ -287,8 +300,9 @@ ___
 왼쪽은 **Error(= 실제값과 예측값의 차이)**의 제곱이고, 오른쪽은 Error의 절댓값이다. 학습할 때 미분하는 것은 그렇게 어렵지 않으므로 쉽게 Gradient를 얻을 수 있을 것이다. (L2가 상대적으로 더 안정적이라고 한다)
 
 
-___
+
 ## **6. 요약 (Summary)**
+---
 
 - 데이터 전처리에서 scale 조정은 정규화하고 규모를 [-1, 1] 사이 값으로.
 - 가중치 초기화는 `w = np.random.randn(n) * sqrt(2.0/n).`
@@ -297,9 +311,8 @@ ___
 - the most common loss function들을 살펴봄
 
 
-___
-
 # 마무리
+---
 
 - 블로그에 댓글기능 추가해야 함
 - Xavier 관련해서 찾아보기
