@@ -2,8 +2,9 @@
 layout: post
 title: "[Coursera] 데이터 전처리 : Feature Engineering - Machine Learning with Tensorflow on Google Cloud Platform"
 subtitle: "feature engineering, tensorflow, google cloud platform"
-categories: dl
+categories: coursera
 tags: coursera dl tf
+img: coursera.png
 comments: true
 ---
 
@@ -12,15 +13,16 @@ comments: true
 Coursera의 **"ML with Tensorflow on GCP"**의 강좌 4 - **Feature Engineering** 이해 및 정리
 
 ## **공부기간**
+---
 2018.09.22.토
 
 ## **참고자료**
+---
 [Coursera - Machine Learning with Tensorflow on Google Cloud Platform -강좌4](https://www.coursera.org/specializations/machine-learning-tensorflow-gcp)
 
-___
 
 # **본문**
-
+---
 오늘은 **coursera**의 **Machine Learning with Tensorflow on Google Cloud Platform**의 강좌 4인 **`Feature Engineering`**에 대해 공부하고자 한다. Machine Learning 모델을 만들고 학습하기에 앞서 feature에 대한 **`preprocessing`** 과정이 매우 중요하기 때문에 강의를 꼼꼼하게 요약하고 정리할 생각이다. **Course 에 없는 내용**이나 **내 주관적인 생각**이 들어갈 수 있다는 점을 감안하고 읽어주었으면 한다.
 
 이번 강의에서는 아래와 같은 사항들을 살펴볼 것이다.
@@ -32,8 +34,8 @@ ___
 
 
 
-___
 ## **목차**
+---
 
 1] **Introduction**
 2] **Raw Data to Features**
@@ -48,10 +50,8 @@ ___
 6] **Summary**
 
 
-___
-
-
 ## **1. Introduction**
+---
 
 ML Model의 정확도를 향상시키기 위해는 2가지 방법이 있다.
 
@@ -69,10 +69,9 @@ ML Model의 정확도를 향상시키기 위해는 2가지 방법이 있다.
 - **Feature** -> **Feature**(add, delete, edit, create)
 : feature를 추가하거나, 수정하거나, 삭제하거나 새로운 feature를 만드는 것에 대한 문제를 살펴볼 것 같다.
 
-___
 
 ## **2. Raw Data to Features**
-
+---
 
 이번 절에서는 어떻게 raw data로부터 feature들을 조작하고 생산하는가에 대한 문제를 다룬다. 이번 절의 목표는 다음과 같다.
 
@@ -85,7 +84,9 @@ ___
 
 
 ### **(1) Raw data -> Feature**
+
 ![2](https://user-images.githubusercontent.com/24144491/45911711-27da1700-be52-11e8-99b9-edab0dde40ff.JPG)
+
 - **Numerical feature vector로 매핑하기**
 : 우리가 구성할 모델은 대부분 적절한 계산을 통해 일정한 값을 도출해내는 여러가지의 함수들로 혼합되어있다. 따라서 이 함수가 **계산**되어야 하므로 **numerical(숫자로 된)** 변수들로 **mapping** 시켜주어야한다.
 
@@ -109,6 +110,7 @@ ___
  다음의 **`예시`**를 보자
 
 ![6](https://user-images.githubusercontent.com/24144491/45911715-2872ad80-be52-11e8-96b3-ec89461c6e5d.png)
+
 좋은 경주마를 예측하기 위해 다음과 같은 feature들이 있다고 하면 어떤 feature들을 선택해야할까?
 
 `A`와 `B`는 말이 잘 달리는지의 경주 실력과 확연한 관계가 있는 것으로 보인다.
@@ -123,8 +125,6 @@ ___
 #### **2-3. 규모(magnitude)가 의미를 갖는 numeric feature**
 
  다음의 **`Quiz`**를 풀어보자.
-
-
 
 >**Which of these features are numeric (or could be in a useful form)?**
 
@@ -226,8 +226,9 @@ rating과 같은 숫자들은 규모가 의미를 가지긴 하지만 각 rating
 - [ML vs Statistics 2](https://www.educba.com/machine-learning-vs-statistics/)
 - [2절 관련 실습 자료-github](https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/courses/machine_learning/deepdive/04_features/a_features.ipynb)
 
-___
+
 ## **3. Preprocessing and Feature Creation**
+---
 
 3번에서는 크게 2가지 부분
 
@@ -310,9 +311,9 @@ ___
 >
 -- **Preprocessing with Cloud Dataprep**
 
-___
 
 ## **4. Feature Crosses**
+---
 
 **Feature cross**는 두 개 이상의 특성을 곱하여(교차하여) 구성되는 **합성 특성**이다.
 
@@ -347,11 +348,11 @@ ___
 [구글 머신러닝 단기집중과정-onehot encoding 특성교차](https://developers.google.com/machine-learning/crash-course/feature-crosses/crossing-one-hot-vectors?hl=ko)
 
 ## feature cross 구현
+---
 
 ![29](https://user-images.githubusercontent.com/24144491/45911737-2c9ecb00-be52-11e8-9419-481ed521473a.JPG)
 
-![30](https://user-images.githubusercontent.com/24144491/45911738-2c9ecb00-be52-11e8-
-8b15-a0556ffdc116.JPG)
+![30](https://user-images.githubusercontent.com/24144491/45911738-2c9ecb00-be52-11e8-8b15-a0556ffdc116.JPG)
 
 **`crossed_column`** 
 
@@ -399,13 +400,14 @@ ___
 >[이와 관련한 embedding의 좋은 코드 예제 - 종현님 블로그](http://excelsior-cjh.tistory.com/175)
 
 
-___
 ## **5. TF Transform**
+---
+
 **`tf.transform`**을 이용하여 **preprocessing**하는 과정을 소개하는 절인데, 이 부분 역시 **`tensorflow`** 에 관한 글로 따로 포스팅할 예정이다.
 
-___
 ## **6. Summary**
- 
+---
+
  이번 강의에서는 아래와 같은 것들을 살펴보았다.
  
 - **feature engineering** 의 **필요성**
@@ -417,9 +419,9 @@ ___
 - **Feature-Cross**
 - Feature-Cross **hash**
 
-___
 
 # **마무리**
+---
 
 이번 역시 설명해야할 양들이 많다보니 글을 작성하는 시간이 오래 걸렸다. 빠르면서도 간결하고 핵심적인 내용들을 적을 수 있도록 노력하는 중이다. 글의 내용이 너무 많을 때는 한 번에 다 담으려 하지말고 나눠서 작성해야겠다. 
 
