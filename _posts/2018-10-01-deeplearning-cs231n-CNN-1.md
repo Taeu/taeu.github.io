@@ -2,38 +2,45 @@
 layout: post
 title: "[CS231n] 강의노트 : CNN (Convolutional Neural Networks)"
 subtitle: "cs231n, cnn, 컨볼루셔널 신경망, 여러가지 CNN 구조"
-category: dl
+categories: cs231n
 tags: cs231n dl
+img: stanford.jpg
 comments: true
 
 ---
 
 
 ## 목표
+---
 
 이미지 처리를 위한 컨볼루셔널 신경망의 개념과 여러가지 컨볼루셔널 신경망의 구조 탐색
 
+
 ## 공부기간
+---
+
 2018.10.01.월 ~ 2018.10.02.화
 
 ## 참고자료
+---
 - [CS231n 강의노트 Convolutional Neural Networks](http://cs231n.github.io/convolutional-networks/)
 - [CS231n 강의노트 Convolutional Neural Netwokrs - 한글번역 (AI-Korea)](http://aikorea.org/cs231n/convolutional-networks/)
 
-___
 
 # 본문
+---
 
 컨볼루셔널 신경망(convolutional Neural Network 줄여서 CNN)에 대한 소개와 CNN을 이해하기 위해 어떤 개념들이 필요한지 살펴본다. 그런다음 CNN의 여러가지 변형 모델들을 살펴보고자 한다.
 
-___
 ## 목차
+---
 1. 아키텍쳐 개요
 2. CNN을 이루는 레이어들
 3. CNN 구조
 
-___
+
 ## 1. 아키텍쳐 개요
+---
 
 일반 신경망은 이미지 데이터를 잘 다루지 못했다. CIFAR-10의 데이터의 경우 각 이미지가 32 X 32 X 3(가로, 세로, 3개 color 채널(Red, Green, Blue의 색상값들))로 이루어져 있고 첫번째 히든 레이어의 하나의 뉴런의 경우 32 X 32 X 3 = 3072개의 weight들이 필요하다. 만약 이미지 크기가 이것보다 훨씬 크다면? 그만큼 가중치가 더 많이 필요하고 이와 같은 fully connectivity는 심각한 낭비이며 많은 수의 모수는 overfitting으로 귀결된다.
 
@@ -45,9 +52,9 @@ CNN은 이와 달리 좀 더 합리적인 방향으로 아키텍쳐를 구성할
 
 ![1](https://user-images.githubusercontent.com/24144491/46351645-d40dd000-c692-11e8-889f-781062ca164b.png)
 
-___
 
 ## 2. CNN을 이루는 레이어들
+---
 
  CNN (Convolutional Neural Networks)의 아키텍쳐에서는 크게 컨볼루셔널 레이어(Conv), 풀링 레이어(Pooling), Fully-connected 레이어라는 3개 종류의 레이어가 사용된다. 전체 CNN 아키텍쳐는 이 3 종류의 레이어들을 쌓아 만들어진다.
  
@@ -268,8 +275,11 @@ V[3,3,1] = np.sum(X[6:11,6:11,:]* W1) + b1
 만약 이미지의 크기가 달라지면 어떻게 될까? 예를 들어,224x224 크기의 이미지를 입력으로 받으면 [7x7x512]의 볼륨을 출력하는 이 아키텍쳐에, ( 224/7 = 32배 줄어듦 ) 된 아키텍쳐에 384x384 크기의 이미지를 넣으면 [12x12x512] 크기의 볼륨을 출력하게 된다 (384/32 = 12 이므로). 이후 FC에서 CONV로 변환한 3개의 CONV 레이어를 거치면 [6x6x1000] 크기의 최종 볼륨을 얻게 된다 ( (12 - 7)/1 +1 =6 이므로). [1x1x1000]크기를 지닌 하나의 클래스 점수 벡터 대신 384x384 이미지로부터 6x6개의 클래스 점수 배열을 구했다는 것이 중요하다. 이 점수 배열들에 평균을 취해서(average pooling 같은) 하나의 값을 구할 수 있다.
 
 이 부분이 잘 이해가 가지 않는다면 [다음 링크](https://stats.stackexchange.com/questions/263349/how-to-convert-fully-connected-layer-into-convolutional-layer)를 참고하면 좋을 것이다.
-___
+
+
 ## 3. CNN 구조 (ConvNet Architectures)
+---
+
 
 컨볼루셔널 네트워크의 구조는 Conv 레이어, Pool 레이어, FC 레이어 그리고 actiavation fucntion의 조합으로 이루어져 있다.
 
@@ -355,8 +365,8 @@ ConvNet을 만들 때 일어나는 가장 큰 병목 현상은 메모리 병목�
 
 
 
-___
 # 마무리
+---
 
 중간에 조금 잘못된 부분도 있고 설명이 더 있으면 좋을만한 부분이 많아서 자료를 찾고 없으면 만드느라 생각보다 오래 걸렸다. 
 
