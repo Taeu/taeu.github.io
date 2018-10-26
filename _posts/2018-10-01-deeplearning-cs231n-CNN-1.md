@@ -4,7 +4,7 @@ title: "[CS231n] 강의노트 : CNN (Convolutional Neural Networks)"
 subtitle: "cs231n, cnn, 컨볼루셔널 신경망, 여러가지 CNN 구조"
 categories: cs231n
 tags: cs231n dl
-img: stanford_univ_logo.png
+img: stanford-univ.jpg
 comments: true
 
 ---
