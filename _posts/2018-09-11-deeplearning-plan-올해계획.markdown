@@ -8,9 +8,11 @@ subtitle:   "[DL] 딥러닝 공부 계획"
 
 categories: dl
 
-tags: plan
+tags: dl, plan
 
 comments: true
+
+img: startup-logo.jpg
 
 ---
 
@@ -48,9 +50,8 @@ comments: true
 
 	- (1) CS231n 강의 듣고 정리
 
+
 2. **Coursera**
-
-
 
 	- (1) MachineLearning with GCP & TF
 
@@ -79,3 +80,5 @@ comments: true
     - (2) Yolo & SSD & RCNN
 
     - (3) RL 관련 Paper
+    
+    ___
