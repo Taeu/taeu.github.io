@@ -2,32 +2,39 @@
 layout: post
 title: "[CS231n] 강의노트 : 신경망 Part3 (Neural Networks)"
 subtitle: "cs231n 강의노트, 학습, 경사 체크, 최적화 알고리즘, 하이퍼파라미터 최적화, 앙상블"
-category: dl
+categories: cs231n
 tags: cs231n dl
+img: stanford.jpg
 comments: true
 
 ---
 
 ## 목표
+---
 
 이번 주제들은 신경망에서 생각해봐야할 것들, 동적인 부분들을 다룬다. Gradient check 부터, 학습 중 주의애햐할 과정들, parameter update 알고리즘, 하이퍼파라메타 설정과 끝으로 Model Ensemble까지 살펴볼 것이다. 
 
 ## 공부기간
+---
 
 2019.2018.09.26.수 ~ 2018.09.28.금 
 30 ~ 40분씩
 
 ## 참고자료
+---
+
 - [CS231n 강의노트 Neural Networks 3](http://cs231n.github.io/neural-networks-3/)
 - [CS231n 강의노트 Neural Networks 3 - 한글번역 (AI-Korea)](http://aikorea.org/cs231n/neural-networks-3/)
 
 
-___
+
 # 본문
+---
 
 
-___
+
 ## 목차
+---
 
 1. 기울기 검사(Gradient check)
 2. Sanity Check
@@ -37,8 +44,10 @@ ___
 6. 평가 (Evaluation, Model Ensembles)
 7. 요약 (Summary)
 
-___
+
 ## 1. 기울기 검사(Gradient check)
+---
+
  총 11가지의 체크할 사항들이 있다.
 
 **[1] Use the centered formula.** h가 정해져 있을 경우, h의 양쪽 둘다 검증할 수 있는 오른쪽 공식을 사용할 것을 권장한다. ( second order - 공식은 에러 텀의 O(h^2)으로 더 작아지므로)
@@ -73,8 +82,9 @@ ___
 
 **[11] Check only few dimensions.** 모든 차원을 다 검사하면 무리가 있으니, 특정 부분의 영역, 차원만 검사를 한다. (대신 그 부분의 모든 parameter에 대해 기울기를 체크해주어야한다.)
 
-___
+
 ## 2. Sanity Checks Tips / Tricks
+---
 
 **[1] Look for correct loss at chance performance.** 처음에 얼만큼의 loss 값이 나올지 예측하고 비교해봐라. `예를들어` CIFAR-10의 예제에서 첫 loss는 대략 2.302라는 것을 예측할 수 있다. 10개의 클래스가 있기 때문에 찍었다고 하면 확률적으로 1/10 만큼은 맞출 수 있기에, softmax loss 값은 -ln(0.1) = 2.302 가 나오게 된다. 만약 이것보다 높게 나왔다면 초기화의 문제가 있을 거라고 생각이 된다.
 
@@ -84,8 +94,9 @@ ___
 
 
 
-___
+
 ## 3. 학습 과정에서 검사할 것들 (Babysitting the learning process)
+---
 
 신경망을 학습하면서 체크해보아야 할 사항들에 대해 알아보자.
 
@@ -127,8 +138,9 @@ print update_scale / param_scale # want ~1e-3
 ![5](https://user-images.githubusercontent.com/24144491/46187636-95d58100-c31f-11e8-8fcf-a7c14beb5aa1.JPG)
 
 
-___
+
 ## 4. 파라미터 업데이트 알고리즘 (Parameter upadates)
+---
 
 파라미터 업데이트 알고리즘에 관한 내용을 살펴보기에 앞서, 몇 가지 사항들을 정리하고자 한다.
 
@@ -150,21 +162,27 @@ ___
 **first-order optimization.** 이제 본격적으로 실전에서 쓰이는 일차 근사 최적화 알고리즘들에 대해 살펴보고자 한다. **SGD, Momentum, NAG, Adagrad, RMSProp, AdaDelta, Adam** 등의 알고리즘이 있는데 [Optimization Algorithms 정리](http://shuuki4.github.io/deep%20learning/2016/05/20/Gradient-Descent-Algorithm-Overview.html) 글에서 설명을 정말 잘 해 놓았기에 지금 읽어보길 추천한다.
 
 - **SGD**
+
 ![7](https://user-images.githubusercontent.com/24144491/46187638-95d58100-c31f-11e8-9323-b78e52cf729b.JPG)
+
 ```python
 x -= learning_rate + dx #dx 는 x로 편미분한 gradient 값
 ```
 
 - **Momentum**
+
 ![8](https://user-images.githubusercontent.com/24144491/46187639-95d58100-c31f-11e8-9e37-0d373ebc61e7.JPG)
+
 ```python
 v = mu * v - learning_rate * dx
 x += v
 ```
 : 이때 mu는 모멘텀(운동량), 보통 0.9로 설정하고 교차 검증을 위해서는 [0.5, 0.9, 0.95, 0.99]로 설정한다. 모멘텀을 쓰면, 속도의 방향은 그라디언트들이 많이 향하는 방향으로 축적된다. 이런 모멘텀은 SGD가 Oscilation현상(지그재그로 가는 현상)을 완화시켜주기도 하고, 관성으로 인해 더 넓은 범위까지 감으로써 local minima에 빠지지 않을 수 있게 해주기도 한다. 
+
 ![9](https://user-images.githubusercontent.com/24144491/46187640-966e1780-c31f-11e8-965e-57db83997566.JPG)
 
 - **NAG**
+
 ![11](https://user-images.githubusercontent.com/24144491/46187642-966e1780-c31f-11e8-9ec4-e8b51b249b51.JPG)
 ```python 
 x_ahead = x + mu * v #먼저 관성으로 가고
@@ -177,7 +195,9 @@ NAG을 이용할 경우 이동을 빨리 하고 미분을 해므로 멈춰야할
 
 
 - **Adagrad**
+
 ![12](https://user-images.githubusercontent.com/24144491/46187644-966e1780-c31f-11e8-9c4d-e06f4190bcb4.JPG)
+
 ```python
 cache += dx**2
 x -= learning_rate * dx /(np.sqrt(cache)+eps)
@@ -185,7 +205,9 @@ x -= learning_rate * dx /(np.sqrt(cache)+eps)
 cache는 그라디언트의 벡터사이즈와 동일한 사이즈이고, 그라디언트 제곲값들을 계속 쌓고있다. 이 경우 step decay를 신경써주지 않아도 learning rate를 자동적으로 조절해줄 수 있다는 장점이있다. 하지만 cache된 값들이 계속 쌓이면 쌓일 수록 그 값은 커지고 그러면 x에 업데이트되는 양이 0에 가깝기 때문에 학습이 조기 중단될 수 있다. (eps는 분모가 너무 0에 가깝지 않도록 안정화시키는 역할을 하는 변수로 1e-4~1e-8의 값이 할당된다)
 
 - **RMSProp**
+
 ![13](https://user-images.githubusercontent.com/24144491/46187646-9706ae00-c31f-11e8-9ab3-43ec65998b99.JPG)
+
 ```python
 cache = decay_rate * cache + (1-decay_rate)* dx**2
 x -= learning_rate * dx / (np.sqrt(cache) +eps) 
@@ -193,14 +215,18 @@ x -= learning_rate * dx / (np.sqrt(cache) +eps)
 Adgrad와 거의 흡사하지만, 이동평균(moving average)를 사용하여 단조감소하는 학습속도를 경감시켰다. 여기서 decay_rate 는 [0.9,0.99,0.999] 중 하나의 값을 취한다. 
 
 - **Adam**
+
 ![14](https://user-images.githubusercontent.com/24144491/46187647-9706ae00-c31f-11e8-8ac8-e923c6847f68.JPG)
+
 ```python
 m = beta1*m + (1-beta1)*dx 
 v = beta2*v + (1-beta2)*(dx**2) 
 x -= learning_rate * m / (np.sqrt(v) + eps)
 ```
 이때 `eps = 1e-8, beta1 = 0.9, beta2 =  0.999`로 세팅한다. 다만, m과 v가 처음에 0으로 초기화되었을 것이라는 가정하에, m,v가 0에 bias된 것을 unbiased 되는 작업을 거친다. 
+
 ![15](https://user-images.githubusercontent.com/24144491/46187648-9706ae00-c31f-11e8-8ba4-f37e765c941d.JPG)
+
 ```python
 m  = beta1 * m + (1-beta1)*dx
 mt = m / (1-beta1**t)
@@ -218,8 +244,9 @@ x -= learning_rate * mt / (np.sqrt(vt) + eps)
 
 
 
-___ 
+
 ## 5. 하이퍼파라미터 최적화 (Hyperparameter Optimization)
+---
 
 이제 Hyperprameter를 Tuning, Optimize하는 방법을 알아보자. 
 - learning rate
@@ -229,14 +256,16 @@ ___
 **[1] 범위.** learning rate는 `10 ** uniform(-6,1)`사이의 난수값으로, 보통은 0.001로 설정. dropout은 `uniform(0,1)`사이의 난수값으로, 보통은 0.2~0.5로 설정. 각 끝 경계에서 초기화되었는지는 확인해볼 것. 원래는 그 사이 난수값이면 구간의 경계값이 초기화될 일은 극히 드물기 때문이다.
 
 **[2] 랜덤 검색 Random Search.** 
+
 ![16](https://user-images.githubusercontent.com/24144491/46187653-979f4480-c31f-11e8-99a9-37c049eb9946.JPG)
 
 **[3] 검증시 단일 검증집합.** 적당한 크기의 검증 집합을 설정해 한 번만 검증하는 것이 더 쉽게 구현할 수 있을 것.
 
 
-___
 
 ## 6. 평가 (Evaluation, Model Ensembles)
+---
+
 
 실전에서, 신경망의 성능을 끌어올릴 수 있는 좋은 방법은 여러 모형을 만들고 그 모형들의 평균값으로 에측하는 것이다. 
 
@@ -245,9 +274,9 @@ ___
 - **한 모형에서 다른 체크포인트들을 (Different checkpoints of a single model).** 만약 훈련이 매우 값비싸면, 어떤 사람들은 단일한 네트워크의 체크포인트들을 (이를테면 매 에폭 후) 앙상블하여 제한적인 성공을 거둔 바 있음을 기억해 두라. 명백하게 이 방법은 다양성이 떨어지지만, 실전에서는 합리적으로 잘 작동할 수 있다. 이 방법은 매우 간편하고 저렴하다는 것이 장점이다.
 - **훈련 동안의 모수값들에 평균을 취하기 (Running average of parameters during training).** 훈련 동안 (시간에 따른) 웨이트 값들의 지수 하강 합(exponentially decaying sum)을 저장하는 제 2의 네트워크를 만들면 언제나 몇 퍼센트의 이득을 값싸게 취할 수 있다. 이 방식으로 당신은 최근 몇 iteration 동안의 네트워크에 평균을 취한다고 생각할 수도 있다. 마지막 몇 스텝 동안의 웨이트값들을 이렇게 “안정화” 시킴으로써 당신은 언제나 더 나은 검증 오차를 얻을 수 있다. 거친 직관으로 생각하자면, 목적함수는 볼(bowl)-모양이고 당신의 네트워크는 극값(mode) 주변을 맴돌 것이므로, 평균을 취하면 극값에 더 가까운 어딘가에 다다를 기회가 더 많아질 것이다.
 
-___
 
 ## 7. 요약 (Summary)
+---
 
 신경망 훈련을 위하여
 
@@ -261,9 +290,9 @@ ___
 - 하이퍼파라미터는 그리드 검색이 아닌 랜덤 검색으로 튜닝해라. 처음에는 생긴 범위에서 탐색하다가 (넓은 초모수 범위, 1-5 에폭 정도만 학습), 점점 촘촘하게 검색하라 (좁은 범위, 더 많은 에폭에서 학습).
 - 추가적인 개선을 위하여 모델 앙상블(model ensemble)을 만들어라.
 
-___
 
 # 마무리
+---
 
 역시 공부하는 시간보다 글을 정리해서 쓰는 일이 오래 걸린다. 
 
