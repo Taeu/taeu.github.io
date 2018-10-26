@@ -2,7 +2,7 @@
 layout: post
 title:  "[CS231n] 강의노트 : 최적화(Optimization) - SGD"
 subtitle:   "[CS231n] optimization landscapes, local search, learning rate, analytic, numerical gradient"
-categories: dl
+categories: cs231n
 tags: cs231n dl optimization
 comments: true
 ---
