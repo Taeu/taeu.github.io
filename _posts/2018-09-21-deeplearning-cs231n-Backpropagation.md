@@ -4,7 +4,7 @@ title: "[CS231n] 강의노트 : 역전파(Backpropagation) 이해"
 subtitle: "backpropagation, chain rule, patterns in gardient flow"
 categories: cs231n
 tags: cs231n dl
-img: stanford.jpg
+img: stanford_univ_logo.png
 comments: true
 ---
 
@@ -12,11 +12,9 @@ comments: true
 역전파 (Backpropagation)에 대한 직관적인 이해를 바탕으로 backprop의 과정과 세부요소들을 살펴보는 것
 
 ## **공부기간**
----
 2018.09.20.목 ~ 2018.09.21.금
 
 ## **참고자료**
----
 - [CS231n 강의노트 Backpropagation](http://cs231n.github.io/optimization-2/#intro)
 - [CS231n 강의노트 Backpropagation-한글번역](http://aikorea.org/cs231n/optimization-2/#intro)
 
@@ -26,7 +24,6 @@ comments: true
 오늘은 **CS231n**의 Course Note 중 **Module 1: Neural Networks**의 4번째 순서에 있는 **Backpropagation**에 대해서 공부해보고자 한다. 참고로 이번 강의노트를 이해하기 위해서는 미분에 대한 개념과 행렬에 대한 곱셈 과정을 알아야 이해하기 쉽다. 간단한 설명도 추가할거지만 이 글로 이해가 잘 되지 않는다면 **미분**, **chain rule**, **행렬의 연산** 등에 대해 추가적으로 찾아보길 적극 권장한다. (나중에 여유가 된다면 이런 부분에 대해서도 포스팅하거나 관련 개념을 쉽게 이해할 수 있는 링크를 추가할 계획이다)
 
 ## **목차**
----
 1. 소개
 2. 그라디언트에 대한 간단한 표현과 이해
 3. 복합 표현식(Compound Expression), 연쇄 법칙(Chain rule), Backpropagation
