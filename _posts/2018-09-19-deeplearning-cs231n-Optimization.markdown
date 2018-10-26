@@ -10,26 +10,29 @@ comments: true
 ## **목표** : 최적화 이해 (Optimization)
 
 ## **공부 기간**
+---
 2018.09.18.화 ~ 2018.09.19.수
 
 
----
+
 ## 참고 자료
+---
 - [CS231n optimization 강의노트](http://cs231n.github.io/optimization-1/)
 - [CS231n linear-classify 강의노트](http://cs231n.github.io/linear-classify/)
 - [CS231n optimization 강의노트 한글 번역(AI-Korea)](http://aikorea.org/cs231n/optimization-1/)
 - [구글 머신러닝 단기집중과정-손실part](https://developers.google.com/machine-learning/crash-course/reducing-loss/gradient-descent?hl=ko)
----
 
-___
+
 
 
 # **본문**
+---
 
  딥러닝에 대한 기본적인 지식을 쌓고자 Standford의 CS231n 강의를 듣기로 결심했다. 우선적으로 아래 cs231n 강의노트를 공부하고, 틈틈이 이동시간에 youtube에 upload된 cs231n에 해당되는 강의를 볼 생각이다. 강의노트 위주로 정리했고 강의를 보다가 드는 의문점이나, 추가로 찾아본 것들을 같이 적었다. 이해한 사항들을 좀 더 쉽게 풀이하는 과정에서 틀린 표현이 있을 수도 있으므로 참고하면서 읽어주시길 바란다.
 
 
 ## **목차**
+---
 1. 소개
 2. 손실함수의 시각화
 3. 최적화(Optimization)
@@ -38,7 +41,7 @@ ___
 
 
 ## **1. 소개 (Introduction)**
-
+---
 **Imgae Classification** 문제에 핵심적인 두가지 요소는 다음과 같다.
 - **(1) Score Function (스코어 함수)**
 - **(2) Loass Function (손실 함수)**
@@ -78,8 +81,9 @@ ___
 
 다시말해, 우리가 **Weight**를 적절히 조절한다면 최저의 Loss를 찾을 수 있게돼 **```Optimization```** 문제를 해결할 수 있을 것이다. 그렇다면 어떻게 Loss를 최적화 시키는 Weight를 찾을 수 있을까?
 
-___
+
 ## **2. 손실함수의 시각화 (Visualizing the loss function)**
+___
  딥러닝의 문제를 풀때 거의 모든 경우 feature가 많은 고차원에서 정의가 된다. 따라서 시각화에 어려움이 있지만 이런 문제는 (y, w1) 혹은 (y, w1, w2)와 같이 2차원 3차원으로 몇개를 뽑아내어 시각화할 수 있다.
 
 ![3](https://user-images.githubusercontent.com/24144491/45766179-f276d300-bc71-11e8-94a3-9820579a1126.JPG)
@@ -104,8 +108,10 @@ ___
 
  사실 위에서 W를 [3 x 1] 으로 보고 보고 w0, w1, w2를 나눌 수 있게 한 거일 텐데, 위의 그림을 단순히 더한다면 사실 w0 = w1 = w2 인 하나의 weight로 표현한 거니까, 아래의 그림을 이해할 때는 W [3 x 1] 이지만 사실 W = [w, w, w] 라고 이해하는 것이 더 편할 것. 그래야 저렇게 2차원으로 그림이 나오지 않나. (강의노트만 봐서 강의에 어떤 조건을 말해주었을 수도 있을 것 같음) 어쨌거나 위의 그림은 Convex, 볼록함수 모양이고, 이런 볼록함수의 최적화는 미분을 통해서 해결할 수 있을 것처럼 보인다. (여기서 꺾이는 부분에서 미분을 할 수 없지만, subgradient가 존재하고, 이를 gradient 대신 이용한다고 한다)
 
-___
+
+
 ## **3. 최적화(Optimization)**
+___
 - (1) Random Search
 - (2) Random Local Search
 - (3) Following the Gradient
@@ -117,6 +123,7 @@ ___
 - (2)은 Weight를 random으로 초기화하고 일정 step만큼 움직이여 가면서 최적의 loss를 찾는다. 이 역시 계속 똑같은 step size만큼 움직여줘야하기 때문에 step size를 얼마로 설정해야하는지 모르며 여전히 비효율적인 면이 있다.
 
 - (3) 만약 미분값을 이용해서 움직인다면 어떨까? 
+
 ![6](https://user-images.githubusercontent.com/24144491/45765928-4cc36400-bc71-11e8-8be0-970a69ad8cbb.png)
  loss 를 줄이려면 오른쪽으로 가야한다는 것은 눈에 보이니까 안다. 그럼 컴퓨터는 어떻게하면 이런 상황일때 오른 쪽으로 가야할까?
 
@@ -132,9 +139,9 @@ ___
 
 우리가 어떤 w 에서 예측된 loss를 구하고, loss function을 w에 대해서 미분한 계수에 따라서 w의 방향을 옮겨주면 되는 것이다. 이것이 경사하강법인 Gradient Descent이다.
 
-___
 
 ## **4. 경사 계산 (Computing the Gradient)**
+___
 - numeric gradient (수치 그라디언트) - 근사
 - analytic gardient (해석적 그라디언트) - 미분 이용
 
@@ -211,8 +218,8 @@ for step_size_log in [-10, -9, -8, -7, -6, -5,-4,-3,-2,-1]:
 - **(2) 효율성의 문제, 모든 example들을 다 계산해 주어야하나? -> batch size! 바로 아래에**
 
 
+## **5. 경사 하강 (Gradient Descent)**
 ___
-#### **5. 경사 하강 (Gradient Descent)**
 
  경사 계산해서 업데이트 해주것도 배웠고 실전에서도 잘 쓸 수 있을지 보았더니, 수 많은 exmaple 들의 (몇 만개 부터 많게는 몇 천 만개 몇 억개 까지) 경사를 모두 계산해주어야 한다면 computation cost가 상당히 많이 들어갈 것이다. 따라서 이 중 몇 개만 뽑아 배치를 이용하는 Mini-batch Gradient Descent가 실전에서 쓰이며, 성능이 좋다는 것이 선험적으로 증명(?)되었다고 한다(rule of thumbs).
 
@@ -227,11 +234,14 @@ while True:
 * Batch size는 2의 제곱수가 입력될 때 빠르다고 한다.(32, 64, 128 같은 것)
 
 
-___
 
 ## **6. 요약**
+___
+
 ![7](https://user-images.githubusercontent.com/24144491/45765932-4f25be00-bc71-11e8-9eae-74167d2b9f88.JPG)
+
  딥러닝의 학습과정에 대한 설명은 아래와 같다.
+ 
 - (1) **Data** / (xi, yi) 이미 값이 있는 x(input)들과 y(label)이 있다.
 - (2) **Score함수** / 처음에는 random 값으로 W vector를 정의한다
 - (3) **Data**를 **Score함수**에 넣어 결과값을 얻는다
@@ -252,8 +262,9 @@ ___
 등의 문제들이 남아있다. 간단히 각각에 대한 해결방안들은 coursera의 여러 딥러닝 강의와 CS231n 강의 및 여러 딥러닝 자료들을 훑어보면서 머릿속으로는 알고 있지만 정리된 자료가 없기에 다시 강의들과 자료들을 보면서 정리한 글을 올릴 예정이다.
 
 
-___
+
 # 느낀점
+___
 
  CS231n 첫 포스팅이 끝났다. 사실 이해하는데는 많은 시간이 걸리지 않았지만 첫 포스팅에다 Markdown 문법, 여러가지 크롤링 설정, 태그 설정 등도 같이 하다보니 정신 없이 작성했다. 이것하다가 저것도 하다가 이 글 쓰다가 다른 사이트도 보다가.. 느낀점도 역시 주저리 말로 늘어 놓는 것보다 정리하면 다음에 내가 다시 글을 볼 때, 어떤 부분을 해야하는지 알 수 있으니까 정리해서 적어놓아야 겠다.
 
