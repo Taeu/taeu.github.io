@@ -4,25 +4,22 @@ title: "[CS231n] 강의노트 : CNN (Convolutional Neural Networks)"
 subtitle: "cs231n, cnn, 컨볼루셔널 신경망, 여러가지 CNN 구조"
 categories: cs231n
 tags: cs231n dl
-img: stanford.jpg
+img: stanford_univ_logo.png
 comments: true
 
 ---
 
 
 ## 목표
----
 
 이미지 처리를 위한 컨볼루셔널 신경망의 개념과 여러가지 컨볼루셔널 신경망의 구조 탐색
 
 
 ## 공부기간
----
 
 2018.10.01.월 ~ 2018.10.02.화
 
 ## 참고자료
----
 - [CS231n 강의노트 Convolutional Neural Networks](http://cs231n.github.io/convolutional-networks/)
 - [CS231n 강의노트 Convolutional Neural Netwokrs - 한글번역 (AI-Korea)](http://aikorea.org/cs231n/convolutional-networks/)
 
@@ -33,7 +30,6 @@ comments: true
 컨볼루셔널 신경망(convolutional Neural Network 줄여서 CNN)에 대한 소개와 CNN을 이해하기 위해 어떤 개념들이 필요한지 살펴본다. 그런다음 CNN의 여러가지 변형 모델들을 살펴보고자 한다.
 
 ## 목차
----
 1. 아키텍쳐 개요
 2. CNN을 이루는 레이어들
 3. CNN 구조
