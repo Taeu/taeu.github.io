@@ -4,7 +4,7 @@ title: "[CS231n] 강의노트 : 역전파(Backpropagation) 이해"
 subtitle: "backpropagation, chain rule, patterns in gardient flow"
 categories: cs231n
 tags: cs231n dl
-img: stanford_univ_logo.png
+img: stanford-univ.jpg
 comments: true
 ---
 
