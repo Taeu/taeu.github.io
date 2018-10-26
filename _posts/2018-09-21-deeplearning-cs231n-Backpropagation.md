@@ -2,8 +2,9 @@
 layout: post
 title: "[CS231n] 강의노트 : 역전파(Backpropagation) 이해"
 subtitle: "backpropagation, chain rule, patterns in gardient flow"
-categories: dl
-tags: cs231n
+categories: cs231n
+tags: cs231n dl
+img: stanford.jpg
 comments: true
 ---
 
@@ -11,20 +12,21 @@ comments: true
 역전파 (Backpropagation)에 대한 직관적인 이해를 바탕으로 backprop의 과정과 세부요소들을 살펴보는 것
 
 ## **공부기간**
+---
 2018.09.20.목 ~ 2018.09.21.금
 
 ## **참고자료**
+---
 - [CS231n 강의노트 Backpropagation](http://cs231n.github.io/optimization-2/#intro)
 - [CS231n 강의노트 Backpropagation-한글번역](http://aikorea.org/cs231n/optimization-2/#intro)
 
 
-___
-
 # **본문**
-
+---
 오늘은 **CS231n**의 Course Note 중 **Module 1: Neural Networks**의 4번째 순서에 있는 **Backpropagation**에 대해서 공부해보고자 한다. 참고로 이번 강의노트를 이해하기 위해서는 미분에 대한 개념과 행렬에 대한 곱셈 과정을 알아야 이해하기 쉽다. 간단한 설명도 추가할거지만 이 글로 이해가 잘 되지 않는다면 **미분**, **chain rule**, **행렬의 연산** 등에 대해 추가적으로 찾아보길 적극 권장한다. (나중에 여유가 된다면 이런 부분에 대해서도 포스팅하거나 관련 개념을 쉽게 이해할 수 있는 링크를 추가할 계획이다)
 
 ## **목차**
+---
 1. 소개
 2. 그라디언트에 대한 간단한 표현과 이해
 3. 복합 표현식(Compound Expression), 연쇄 법칙(Chain rule), Backpropagation
@@ -34,12 +36,14 @@ ___
 7. 역방향 흐름의 패턴
 8. 벡터 기반의 그리라디언트 계산
 
-___
+
 ## **1. 소개**
+---
 앞선 [Optimization 글](https://taeu.github.io/dl/2018/09/19/deeplearning-cs231n-Optimization/)에서 딥러닝의 학습과정을 살펴보았다. **Loss**를 최적화하기 위해 **W**로 **미분한 값(Gradient)**을 이용했다. 복잡한 네트워크에서 역시 Loss를 최적화하기 위해 W를 미분하고 그 값을 이용해 W를 업데이트 시켜주면 된다. 하지만 W가 여러 네트워크를 거쳐 Loss로 가기때문에 단순히 바로 Loss를 W로 미분해줄 수 없다. 그래서 여기서 필요한 개념이 **Chain rule**이고, 이 chain rule을 이용해 미분한 값들을 연쇄적으로 곱해주어 gradient를 얻을 수 있는데 이러한 과정이 **Backpropagation**이다. 예시들과 함께 이 내용들을 차근차근 들여다보자.
 
-___
+
 ## **2. 그라디언트에 대한 간단한 표현과 이해**
+---
 간단한 함수 f(x,y) = xy 를 보자
 
 ![1](https://user-images.githubusercontent.com/24144491/45867887-6a064880-bdbf-11e8-98aa-4e951a14fa5c.JPG)
@@ -66,14 +70,17 @@ f를 y로 미분하면 x가 된다.
 ![3](https://user-images.githubusercontent.com/24144491/45867892-6bd00c00-bdbf-11e8-8de1-ec6d969b72e8.JPG)
 ![4](https://user-images.githubusercontent.com/24144491/45867895-6d013900-bdbf-11e8-9108-09fd540b203f.JPG)
 
-___
+
 ## **3. 복합 표현식(Compound Expression), 연쇄 법칙(Chain rule), Backpropagation**
+---
 ![5](https://user-images.githubusercontent.com/24144491/45867897-6d99cf80-bdbf-11e8-8a2c-17e1775cea7c.JPG)
 
 자 이렇게 생긴 회로가 있다고 하자. forward pass 는 초록색으로 표시돼 있고, backward pass는 backpropation한 값들(바로 앞 뒤 관계만을 고려해 미분한 값)은 적색으로 표시돼있다. 이 회로를 찬찬히 살펴보자.
 
 #### **Forward 부분**
+
 ![6](https://user-images.githubusercontent.com/24144491/45867899-6e326600-bdbf-11e8-97b6-f76adeceb9ad.png)
+
 초록색들은 해당 값들 이다. 이 회로는 
 > q = x + y
 > f = q * z
@@ -123,13 +130,15 @@ dfdq = z # df/dq = z, so gradient on q becomes -4
 dfdx = 1.0 * dfdq # dq/dx = 1. And the multiplication here is the chain rule!
 dfdy = 1.0 * dfdq # dq/dy = 1
 ```
-___
+
 ## **4. Backpropagation에 대한 직관적인 이해**
+---
 
 Backpropagation은 굉장히 지역적인(local) 프로세스를 가진다. 앞의 회로의 backpropagation에 대해서 살펴봤듯이 각 회로의 앞 뒤만 고려해 gradient 식을 구해놓고, 실제로 backward를 할때 필요한 변수값만 넣어주면 바로 계산되기 때문이다. 연쇄 법칙을 통해 게이트는 이 그라디언트 값들을 받아들여 필요한 모든 그라디언트 값을 곱해주면 끝.
 
-___
+
 ## **5. 모듈성 : 시그모이드 예제**
+---
 
 위의 회로(circuit)에 대한 예는 Backpropagation과 나중에 배울 Neural Network 구조를 이해하는데도 좋은 예시이다. 어떤 종류의 함수도 미분이 가능하다면 게이트로서의 역할을 할 수 있다. 그의 한 예로 시그모이드함수를 살펴보자.
 
@@ -175,9 +184,9 @@ dw = [x[0] * ddot, x[1] * ddot, 1.0 * ddot] # backprop into w
 ```
 구현 팁(protip): forward pass 회로(?)나 함수들을 backprop을 쉽게할 수 있는 함수로 잘게 분해하는 것은 언제나 도움이 된다고 한다. 위의 코드에서 dot과 f함수를 만든 것처럼.
 
-___
 
 ## **6. Backprop 실제 : 단계별 계산**
+---
 
 또 다른 예제를 통해서 Backprop을 확인해보자.
 
@@ -233,8 +242,9 @@ dy += ((1 - sigy) * sigy) * dsigy                                 #(1)
 (1) cache를 해둬야 backprop에 쓸 수 있으니 저장해야하고
 (2) dx의 backprop를 보면, (4),(3),(2) 에서 각각 x에 대한 미분 값들이 나오는데 모두 x의 변화에 대한 f의 변화량이므로 **add** 해주어야 한다. 따라서 backprop 코드를 짤 때 역시 **`+=`**을 사용하도록 하자.
 
-___
+
 ## **7. 역방향 흐름의 패턴**
+---
 
 ![15](https://user-images.githubusercontent.com/24144491/45867919-768aa100-bdbf-11e8-97eb-c5d1c8eaddcc.JPG)
 
@@ -254,8 +264,8 @@ ___
 
 
 
-___
 ## **8. 벡터 기반의 그리라디언트 계산** 
+---
 
 이제 single variables 이 아닌 matrix(행렬), vector, tensor의 연산으로 확장해보자.
 
@@ -284,8 +294,8 @@ D = W.dot(X) 인데 ``` dD / dW ```는 단순히 X가 와버리면 W - ( dD / dW
 - [행렬의 미분 - 데이터 사이언스 스쿨](https://datascienceschool.net/view-notebook/8595892721714eb68be24727b5323778/)
 
 
-___
 ## **요약**
+---
 
 - **Gradient**의 의미를 알았다.
 - 회로를 통한 **flow, backwards pass, backprop**를 직관적으로 이해했다.
@@ -293,7 +303,7 @@ ___
 - 학습하기전 **feature** 들의 **preprocessing** 과정이 중요하다는 점을 발견했다.
 
 ## **느낀점**
-
+---
  cs231n 강의관련 2번째 포스팅이 끝났다. 확실히 이해하고 적용하는데에는 큰 시간이 걸리지 않지만, 이것을 다른 사람에게 표현하고자 하니 생각보다 시간이 오래 걸린다. 또 쉽고 정확하게 전달하고자하는 욕심이 있어서 이것저것 더 찾고 생각하게 돼 더 많은 시간을 공부한다. 글로 주저리 주저리 쓰지말고 정리해보자.
 
 - 추가로 포스팅 할 내용들 : (1)**feature preprocessing**, (2)**행렬 계산**, (3)**Backpropagation** API 구성 뜯어보기, 구현해보기
