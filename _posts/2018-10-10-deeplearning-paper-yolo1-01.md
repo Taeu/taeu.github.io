@@ -18,10 +18,10 @@ img: yolo-v1.jpg
 ![2](https://user-images.githubusercontent.com/24144491/46718831-6cb1da80-cca7-11e8-866b-56e8fb3fac13.png)
 
 ---
-- **[0. Background 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-01/)**
-- **[1. Introduction 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-01/)**
-- **[2. Unified Detection 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-02/)**
-- **[3. Conclusion 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-03/)**
+- **[0. Background 글](https://taeu.github.io/paper/deeplearning-paper-yolo1-01/)**
+- **[1. Introduction 글](https://taeu.github.io/paper/deeplearning-paper-yolo1-01/)**
+- **[2. Unified Detection 글](https://taeu.github.io/paper/deeplearning-paper-yolo1-02/)**
+- **[3. Conclusion 글](https://taeu.github.io/paper/deeplearning-paper-yolo1-03/)**
 ---
 
 
@@ -74,7 +74,7 @@ one stage method란 한 번만에 image detection을 할 수 있는 알고리즘
 # Next.
 ---
 
-YOLO가 구체적으로 어떤 네트워크를 가지고 어떤 loss function을 설정하여 Loss를 최적화하는 학습과정을 거치는지에 대해서는 [다음 글](https://taeu.github.io/dl/deeplearning-paper-yolo1-02/)에서 구체적으로 살펴볼 것이다.
+YOLO가 구체적으로 어떤 네트워크를 가지고 어떤 loss function을 설정하여 Loss를 최적화하는 학습과정을 거치는지에 대해서는 [다음 글](https://taeu.github.io/paper/deeplearning-paper-yolo1-02/)에서 구체적으로 살펴볼 것이다.
 
 
 ## 참고자료
