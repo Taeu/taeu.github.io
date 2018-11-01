@@ -163,7 +163,7 @@ print update_scale / param_scale # want ~1e-3
 ![7](https://user-images.githubusercontent.com/24144491/46187638-95d58100-c31f-11e8-9323-b78e52cf729b.JPG)
 
 ```python
-x -= learning_rate + dx #dx 는 x로 편미분한 gradient 값
+x -= learning_rate * dx #dx 는 x로 편미분한 gradient 값
 ```
 
 - **Momentum**
