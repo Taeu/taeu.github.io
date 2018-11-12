@@ -99,9 +99,7 @@ ___
 스터디 리더 분들과 데브씨서울 스태프 분들과 비밀의(생각보다 추운) 정원에서 맛있는 저녁과 따뜻한 강의실 안에서 뒷풀이를 하며 서로 알아가는 시간을 가졌다.
 
 ![44](https://user-images.githubusercontent.com/24144491/48380210-39d18b00-e71a-11e8-87d9-25aeb40c7b9f.jpg)
-
 ![55](https://user-images.githubusercontent.com/24144491/48380211-39d18b00-e71a-11e8-8f2a-bcf389613069.jpg)
-
 ![66](https://user-images.githubusercontent.com/24144491/48380213-3a6a2180-e71a-11e8-89dc-63e061ec2e3d.jpg)
 
 # 끝으로
