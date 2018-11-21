@@ -4,7 +4,7 @@ title: "[논문] SSD: Single Shot Multibox Detector 분석"
 category: paper
 tags: dl paper
 comments: true
-img: ssd.jpg
+img: ssd1.jpg
 ---
 # SSD:Single Shot Multibox Detector
 
@@ -197,7 +197,8 @@ PASCAL VOC, COCO Dataset에서 속도, 정확도 성능 SOTA. (TOP 1)
 
 속도, 정확도 면에서 성능 SOTA가 된데는 다음과 같은 이유 덕분일 것이라 추측한다.
 
-- Output layer와 FC 하지 않고 Conv를 이용. (Weight 수 급감, 속도 증가)
+
+>- Output layer와 FC 하지 않고 Conv를 이용. (Weight 수 급감, 속도 증가)
 - 여러 feature 맵은, 한 이미지를 다양한 grid로 접근하고 다양한 크기의 물체들을 detect 할 수 있게함.
 - default box 사용은 weight initialize와 normalize 효과를 동시에 가져올 수 있을듯
 - 6개의 bounding box를 통해 겹치는 좌표의 다양한 물체 detect 가능.
@@ -205,7 +206,7 @@ PASCAL VOC, COCO Dataset에서 속도, 정확도 성능 SOTA. (TOP 1)
 
 분석하면서 생각이 든 한계점들이 몇 가지 안되지만 적어보자면 다음과 같다.
 
-- 여러개의 feature map 의 detection을 다 계산하므로 computation cost +
+>- 여러개의 feature map 의 detection을 다 계산하므로 computation cost +
 - default box의 scale이나 aspect ratio는 비과학적. 비교적 쉽게 예측되는 ratio 외에 특이한 ratio를 가진 물체는 예측할 수 없음.
 
 요약본은 내일 만들어야겠다.
