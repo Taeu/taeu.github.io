@@ -10,7 +10,7 @@ img: ssd1.jpg
 
 ![01](https://user-images.githubusercontent.com/24144491/48844089-46ba4280-eddc-11e8-8803-3c1dc579d67b.png)
 
-[Yolo v1 분석](https://taeu.github.io/paper/deeplearning-paper-yolo1-01/)에 이어서 오늘은 SSD에 대해 분석하고자 한다. 이 논문에 대한 요약글은 많았지만 정확하게 + 자세하게 분석한 글은 찾지 못했다. 그래서 전체적인 프로세스를 다시 짚고 넘어가면서 어떻게 돌아가겠구나하는 직관적인 이해와 각 특징들이 왜 이런 결과를 가져왔는지에 대해 보다 자세히 쓰고자 한다. (정리하다가 귀찮아서 또 생략할 수도 있지만 적어도 내가 논문을 읽다 막힌 부분이나 자세한 과정이 있으면 직관적으로 이해할 수 있는 부분들은 다 다루겠다) 대신 Yolo v1에 이미 설명한 내용들은 추가적으로 다루지 않을 것이니 [Yolo v1](https://taeu.github.io/paper/deeplearning-paper-yolo1-01/) 글을 먼저 읽고 오는 것을 추천한다.
+[Yolo v1 분석](https://taeu.github.io/paper/deeplearning-paper-yolo1-01/)에 이어서 오늘은 SSD에 대해 분석하고자 한다. 이 논문에 대한 요약글은 많았지만 정확하게 + 자세하게 분석한 글은 찾지 못했다. 그래서 전체적인 프로세스를 다시 짚고 넘어가면서 어떻게 돌아가겠구나 직관적으로 이해할 수 있게, 각 특징들이 왜 이런 결과를 가져왔는지에 대해 보다 자세히 쓰고자 한다. (정리하다가 귀찮아서 또 생략할 수도 있지만 적어도 내가 논문을 읽다 막힌 부분이나 자세한 과정이 있으면 직관적으로 이해할 수 있는 부분들은 다 다루겠다) 대신 Yolo v1에 이미 설명한 내용들은 추가적으로 다루지 않을 것이니 [Yolo v1](https://taeu.github.io/paper/deeplearning-paper-yolo1-01/) 글을 먼저 읽고 오는 것을 추천한다. (시간이 된다면 Faster R-CNN도)
 
 
 # Abstract
@@ -24,11 +24,11 @@ SSD의 알고리즘을 한 문장으로 정리하면 위와 같다. 아웃 풋�
 ---
 > We introduce SSd, a single-shot detector for multiple categories that is faster than the previous state-of-the-art for single shot detectors(YOLO), and significantly more accurate, in fact as accurate as slower techniques that perform explicit region proposals and pooling(including Faster R-CNN).
 
-한 마디로 성능, 속도면에서 내가 Top이다라고 말하고 있다.
+한 마디로 성능, 속도면에서 내가 Top이다.
 
 > The core of SSD is predicting category scores and box offsets for a fixed set of default bounding boxes using small convolutional filters applied to feature maps.
 
-어느 Detection Alogrithms 과 마찬가지로 box의 class 점수와, box의 위치좌표 크기를 에측하는데 고정된 기본 경계상자를 예측한다. 이 부분은 2.1 Model 부분과 2.2 Training 부분에서 더 자세히 다뤄볼 것이다.
+어느 Detection Alogrithms 과 마찬가지로 box의 class 점수와, box의 위치좌표 크기를 에측하는데 고정된 기본 경계상자를 예측한다. **이 부분은 2.1 Model 부분과 2.2 Training 부분에서 더 자세히 다뤄볼 것이다.**
 
 > To achieve high detection accuracy we produce predictions of different scales from feature maps of different scales, and explicitly separate predictions by aspect ratio.
 
@@ -43,7 +43,7 @@ SSD의 알고리즘을 한 문장으로 정리하면 위와 같다. 아웃 풋�
 ---
 ## 2.1 Model
 
-Image Detection의 목적은 어떤 이미지 자료가 있으면 그 이미지 안에 들어있는 사물들을 찾아야(detect) 한다. 찾는 다는 의미는 사물들의 위치와 사물이 이미지 안에 어디있는지 나타내야하며 따라서 우리는 그 사물이 어떤 사물인지에 대한 정보와 더불어 사물들의 위치정보 사물의 크기까지 예측해야하는 것이다. 따라서 Image Detection의 기본적인 Input은 이미지, Output은 이미지 안에 있는 사물들이 어떤 class 인지 나타내는 class 점수와, 그 사물의 offset(위치좌표 주로 중심 x,y좌표와 w,h, 너비와 높이)이 나와야한다. 이를 주의하고 아래의 SSD의 모델 구조를 살펴보자.
+Image Detection의 목적은 어떤 이미지 자료가 있으면 그 이미지 안에 들어있는 사물들을 찾아야(detect) 한다. 찾는다는 의미는 사물들의 위치와 사물이 이미지 안에 어디있는지 나타내야하며 따라서 우리는 그 사물이 어떤 사물인지에 대한 정보와 더불어 사물들의 위치정보 사물의 크기까지 예측해야하는 것이다. 따라서 Image Detection의 기본적인 Input은 이미지, Output은 이미지 안에 있는 사물들이 어떤 class 인지 나타내는 class 점수와, 그 사물의 offset(위치좌표 주로 중심 x,y좌표와 w,h, 너비와 높이)이 나와야한다. 이를 주의하고 아래의 SSD의 모델 구조를 살펴보자.
 
 ![model](https://user-images.githubusercontent.com/24144491/48844097-47eb6f80-eddc-11e8-888c-2ae5d5a51e6a.JPG)
 
@@ -93,7 +93,7 @@ Image Detection의 목적은 어떤 이미지 자료가 있으면 그 이미지 
 
 ## 2.2 Training
 
-특히 training의 loss fucntion(Objective)에 대해 자세히 설명한 블로그는 발견하지 못했다. 그만큼 한 두번봐서는 이해하기 힘들게 설명이 되어있다는 뜻이기도 하다. 왜냐하면 predicted box와 default box에 대한 정확한 구분이 필요하고 Fast R-CNN의 논문에서 anchor box와 loss function 부분의 이해가 필요하기 때문이기도 하다. 따라서 이 부분을 자세히 다룰 것이지만 그래도 이해가 되지 않는다면 Fast R-CNN이나, anchor box에 대한 자료를 한 번 읽어보고 다시 읽어보길 권한다. 역시 내용에 바로 들어가기에 앞서 정리된 도식으로 프로세스를 살펴보자.
+특히 training부분, loss fucntion(Objective)에 대한 부분을 자세히 설명한 블로그는 발견하지 못했다. 그만큼 한 두번봐서는 이해하기 힘들게 설명이 되어있다는 뜻이기도 하다. 왜냐하면 predicted box와 default box에 대한 정확한 구분이 필요하고 Fast R-CNN의 논문에서 anchor box와 loss function 부분의 이해가 필요하기 때문이기도 하다. 이 부분을 자세히 다룰 것이지만 그래도 이해가 되지 않는다면 Fast R-CNN이나, anchor box에 대한 자료를 한 번 읽어보고 다시 읽어보길 권한다. 역시 내용에 바로 들어가기에 앞서 정리된 도식으로 training 프로세스를 살펴보자.
 
 ![4](https://user-images.githubusercontent.com/24144491/48844084-4621ac00-eddc-11e8-897b-8e7c1348eb92.png)
 
@@ -101,11 +101,14 @@ Image Detection의 목적은 어떤 이미지 자료가 있으면 그 이미지 
 
 ![6](https://user-images.githubusercontent.com/24144491/48844087-4621ac00-eddc-11e8-9f5a-9d592bdba3d1.png)
 
+
 ![training0](https://user-images.githubusercontent.com/24144491/48844099-47eb6f80-eddc-11e8-96c6-6c036cf9e4a7.png)
 
-**Predicted Box.** Extra Network의 5 x 5 의 feature map에서 output (predicted box)를 위해 conv 연산을 하면 총 5 x 5 x (6 x (21 + 4))의 값이 형성된다. ( = grid cell x grid cell x (# of bb x ( class + offset)))
+**`Ground Truth Box.`** 우리가 예측해야하는 정답 박스.
 
-**Default Box.** 하지만 5x5 feature map은 각 셀당 6개의 default box를 가지고 있다. 이때 default box의 w, h는 feature map의 scale에 따라 서로 다른 s 값과 서로 다른 aspect ratio인 a 값을 이용해 도출된다. 또 default box의 cx와 cy는 feature map size와 index에 따라 결정된다.
+**`Predicted Box.`** Extra Network의 5 x 5 의 feature map에서 output (predicted box)를 위해 conv 연산을 하면 총 5 x 5 x (6 x (21 + 4))의 값이 형성된다. ( = grid cell x grid cell x (# of bb x ( class + offset)))
+
+**`Default Box.`** 하지만 5x5 feature map은 각 셀당 6개의 default box를 가지고 있다. 이때 default box의 w, h는 feature map의 scale에 따라 서로 다른 s 값과 서로 다른 aspect ratio인 a 값을 이용해 도출된다. 또 default box의 cx와 cy는 feature map size와 index에 따라 결정된다.
 
 먼저 default box와 ground truth box 간의 IOU를 계산해 0.5 이상인 값들은 1(positive), 아닌 값들은 0으로 할당한다. (이는 아래서 x 에 해당하는 값) 예를 들어, 그림과 같이 5x5의 feature map의 13번째 셀(가운데)에서 총 6개의 default box와 predicted bounding box가 있는데, 같은 순서로 매칭되어 loss를 계산한다. 이는 아래의 loss function을 보면 더 쉽게 이해할 수 있을 것이다. 어쨌든, 매칭된(x=1, positive) default box와 같은 순서의 predicted bounding box에 대해서만 offset 에 대한 loss를 고려한다.
 
@@ -132,7 +135,7 @@ Image Detection의 목적은 어떤 이미지 자료가 있으면 그 이미지 
 
 ### 용어정리
 
-- x^p_ij = {1,0} i번째 default box와 j번째 ground truth 박스의 category p에 물체 인식 지표. p라는 물체의 j번째 ground truth와 i번째 default box 간의 IOU 가 0.5 이상이면 1 아니면 0. 
+- x^p_ij = {1,0} i번째 default box와 j번째 ground truth 박스의 category p에 물체 인식 지표. p라는 물체의 j번째 ground truth와 i번째 default box 간의 IOU 가 0.5 이상이면 1 아니면 0.
 - N 은 # of matched default boxes
 - l 은 predicted box (예측된 상자)
 - g 는 ground truth box
