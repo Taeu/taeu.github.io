@@ -102,7 +102,8 @@ SSD나 Fast R-CNN의 경우 사람이 임의로 선정한 anchor box의 도움�
 
 이렇게 word tree가 만들어졌다고 한다면, 우리가 어떤 특정 노드를 예측할때는 조건부 확률을 쓰게된다. 예를들어 bald eagle을 예측해야하는 경우
 
-> Pr(bald eagle) = Pr(bald eagle|eagle) x Pr(eagle|bird) x Pr(bird|animal), (Pr(animal) = 1이라 가정)
+> Pr(bald eagle) = Pr(bald eagleㅣeagle) x Pr(eagleㅣbird) x Pr(birdㅣanimal)
+> (Pr(animal) = 1이라 가정)
 
 이제 이 식이 이해가 될 것이다.
 
