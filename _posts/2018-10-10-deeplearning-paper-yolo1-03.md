@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[논문] YOLO v1 리뷰 - 03" 
+title: "[논문] YOLO v1 분석 - 03" 
 subtitle: "논문, paper, yolo, yolo-v1"
 category: paper
-tags: dl paper
+tags: dl paper objectDetection
 comments: true
 img: yolo-v1.jpg
 ---

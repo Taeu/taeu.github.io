@@ -2,7 +2,7 @@
 layout: post
 title: "[논문] SSD: Single Shot Multibox Detector 분석"
 category: paper
-tags: dl paper
+tags: dl paper objectDetection
 comments: true
 img: yolo9000_1.png
 ---

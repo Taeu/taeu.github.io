@@ -1,8 +1,8 @@
 ---
 
 layout: post
-title: "[논문] YOLOv3: An Incremental Improvement 분석"
-category: dl
+title: "[논문] YOLOv3:An Incremental Improvement 분석"
+category: paper
 tags: dl paper objectDetection
 comments: true
 img: ssd1.jpg
