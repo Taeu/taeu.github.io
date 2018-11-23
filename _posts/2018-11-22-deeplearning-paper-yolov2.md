@@ -2,7 +2,7 @@
 layout: post
 title: "[논문] YOLO9000: Better, Faster, Stronger 분석"
 category: paper
-tags: dl paper
+tags: dl paper objectDetection
 comments: true
 img: ssd1.jpg
 ---
