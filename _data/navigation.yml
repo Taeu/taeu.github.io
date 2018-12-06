@@ -17,6 +17,10 @@
       url: /cs231n
       desc: cs231n Review
     -
+      title: NLP
+      url: /nlp
+      desc: nlp related
+    -
       title: etc
       url: /etc
       desc: etc
