@@ -184,7 +184,7 @@ model.add(SimpleRNN(32, return_sequences=True))
 model.summary()
 ```
 
-> 전체 시퀀스를 다 얻으려면 위와 같이 return_sequence = True 로 바꿔주자.
+> 전체 시퀀스를 다 얻으려면 위와 같이 return_sequences = True 로 바꿔주자.
 
 ![2](https://user-images.githubusercontent.com/24144491/49584619-3dfe6a80-f99f-11e8-9d7d-cb28a1b892d3.PNG)
 
