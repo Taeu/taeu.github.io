@@ -5,7 +5,7 @@ title: "[논문] VAE(Auto-Encoding Variational Bayes) 직관적 이해"
 category: paper
 tags: dl paper generativeModel unsupervised
 comments: true
-img: dimension2.png
+img: dimension2.PNG
 
 ---
 
