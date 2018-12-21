@@ -236,7 +236,7 @@ ___
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 
-n=15
+n=20
 digit_size = 28
 figure = np.zeros((digit_size*n,digit_size*n))
 grid_x = norm.ppf(np.linspace(0.05,0.95,n))
@@ -257,7 +257,7 @@ plt.show()
 
 ![manifold2](https://user-images.githubusercontent.com/24144491/50323704-289c4b00-051e-11e9-8dad-f32bad3c0583.PNG)
 
-위의 코드를 실행시키면 위 그림에서 오른쪽과 같은 도식이 나오는데 학습이 잘 되었다면 차원의 manifold를 잘 학습했다는 말이다. 그 manifold를 2차원으로 시각화한것이 오른쪽 그림인데 2D상에서 거리의 유의미한 차이에 따라 숫자들이 달라지는 것을 확인할 수 있으며, 각 숫자 상에서도 서로 다른 값들을 가지고 있다는 것이 보인다.
+위의 코드를 실행시키면 위 그림에서 오른쪽과 같은 도식이 나오는데 학습이 잘 되었다면 차원의 manifold를 잘 학습했다는 말이다. 그 manifold를 2차원으로 축소시킨 것(z1,z2)에서 z1 20개(0.05~0.95), z2 20개, 총 400개의 순서쌍의 xi,yi에서 sample을 뽑아 시각화한것이 오른쪽 그림인데 2D상에서 거리의 유의미한 차이에 따라 숫자들이 달라지는 것을 확인할 수 있으며, 각 숫자 상에서도 서로 다른 rotation들을 가지고 있다는 것이 보인다.
 
 
 ## Insight
