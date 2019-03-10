@@ -13,7 +13,9 @@ img: medical2.jpg
 
 본 글은 서울 아산병원과 카카오브레인에서 주최하는 HeLP Challenge 의 2-2. Breast cancer Metastasis Detection 의 모델을 구현하기 위해 고려했던 사항들이다.
 
-![1552217863122](C:\Users\lalat\AppData\Roaming\Typora\typora-user-images\1552217863122.png)
+![ni](https://user-images.githubusercontent.com/24144491/54084761-26f15f00-4378-11e9-9c43-151b88dd1cde.png)
+
+
 
 
 

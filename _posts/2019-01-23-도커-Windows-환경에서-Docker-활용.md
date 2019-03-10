@@ -157,7 +157,9 @@ docker 치면 명령어들 쭉 나옴.
 
 
 
-대회 때 만들었떤 이미지들..![도커이미지](C:\Users\lalat\Desktop\도커이미지.png)
+대회 때 만들었떤 이미지들.. 사실 이보다 훨씬 많다.. 올린 이미지만 290개니까.. ㅎㅎ
+
+![di](https://user-images.githubusercontent.com/24144491/54084749-fe696500-4377-11e9-9beb-8b3227607b5c.png)
 
 
 
