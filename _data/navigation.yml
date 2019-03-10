@@ -21,12 +21,19 @@
       url: /nlp
       desc: nlp related
     -
+      title: Healthcare
+      url: /healthcare
+      desc: healthcare related
+    -
       title: etc
       url: /etc
       desc: etc
 - title: Daily
   url: /daily
   desc: Daily log
+- title: Tech
+  url: /tech
+  desc: another techs
 - title: Tags
   url: /tags
   desc: Tags
