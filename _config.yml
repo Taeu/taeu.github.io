@@ -1,4 +1,4 @@
-title: Taeu
+﻿title: Taeu
 email: specia1ktu@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Taeu's blog
@@ -49,3 +49,6 @@ exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
 
 #Open the "_sass > base", open "_variables.scss"
 google_fonts: "Nanum+Gothic:400,700"
+
+css:
+  +  - /assets/css/syntax.css
