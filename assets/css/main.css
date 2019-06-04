@@ -16,7 +16,7 @@ p {
 }
 
 .highlight {
-  background-color: #fafafa;
+  background-color: #000000;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   margin: 0;
@@ -45,7 +45,7 @@ code.highlighter-rouge {
 }
 
 .highlight .c {
-  color: #999;
+  color: #000000;
 }
 
 
