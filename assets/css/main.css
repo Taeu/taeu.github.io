@@ -2,7 +2,6 @@
 @import url("../fonts/source-code-pro/css/source-code-pro.css");
 @import url("../fonts/spoqa-han-sans/css/spoqa-han-sans.css");
 @import url("../fonts/fontello/css/fontello.css");
-@import url(https://fonts.googleapis.com.com/earlyaccess/nanumgothic.css);
 
 /* reset */
 
@@ -16,28 +15,28 @@ p {
 }
 
 .highlight {
-  background-color: #222222;
+  background-color: #fafafa;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   margin: 0;
 }
 
 .highlighter-rouge {
-  color: #222222;
+  color: #87314e;
   font-size: 0.9rem;
   font-weight: 400;
   /* border: 1px solid #607D8B; */
   -webkit-border-radius: 3px;
   border-radius: 3px;
   padding: 0.1rem 0;
-  background: #222222;
+  background: #fafafa;
 }
 
 code.highlighter-rouge {
   padding: 1px 3px;
   font-weight: 500;
   color: #c7264e;
-  background-color: #222222;
+  background-color: #f9f2f4;
 }
 
 .highlight .hll {
@@ -45,7 +44,7 @@ code.highlighter-rouge {
 }
 
 .highlight .c {
-  color: #a52424;
+  color: #999;
 }
 
 
@@ -580,7 +579,7 @@ hr {
  */
 
 pre {
-  font-family: 'Nanum Gothic', monospace, monospace;
+  font-family: 'Source Code Pro', monospace, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -647,7 +646,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: 'Nanum Gothic', monospace, monospace;
+  font-family: 'Source Code Pro', monospace, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -760,7 +759,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: sans-serif;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -1035,7 +1034,7 @@ html {
 }
 
 body {
-  font-family: 'Nanum Gothic', 'Montserrat', sans-serif;
+  font-family: 'Spoqa Han Sans', 'Montserrat', sans-serif;
   font-weight: 300;
   color: #3e3e40;
   margin: 0;
@@ -1050,7 +1049,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Nanum Gothic', 'Lato', sans-serif;
+  font-family: 'Spoqa Han Sans', 'Lato', sans-serif;
   color: #311e3e;
   font-weight: 700;
 }
@@ -1170,7 +1169,7 @@ pre code {
 /* = = = = = = = = = = Header Styles = = = = = = = = = = */
 
 .main-header {
-  font-family: 'Nanum Gothic','Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
   padding: 15px 0;
   background-color: #fff;
   -webkit-box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.3);
@@ -1194,7 +1193,7 @@ pre code {
 
 .main-header .logo {
   width: 50%;
-  font-family: 'Nanum Gothic','Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
 }
 
@@ -1481,7 +1480,7 @@ pre code {
 }
 
 .post-card .post-card-body .post-card-title {
-  font-family: 'Nanum Gothic','Spoqa Han Sans', 'Lato', sans-serif;
+  font-family: 'Spoqa Han Sans', 'Lato', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 18px;
@@ -1685,7 +1684,7 @@ pre code {
 }
 
 .recent-box .recent-title {
-  font-family: 'Nanum Gothic', 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   color: #311e3e;
   text-align: center;
@@ -1965,7 +1964,7 @@ pre code {
 
 .blog-tags h1 {
   text-align: center;
-  font-family: 'Nanum Gothic', 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 36px;
   text-align: center;

@@ -1,8 +1,6 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
 .highlight {
-  background-color: #222222;
+  background-color: #fafafa;
   border-radius: 3px;
   margin: 0;
 }
@@ -430,7 +428,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: 'Nanum Gothic','Source Code Pro', monospace, monospace;
+  font-family: 'Source Code Pro', monospace, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -485,7 +483,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: 'Nanum Gothic', 'Source Code Pro', monospace, monospace;
+  font-family: 'Source Code Pro', monospace, monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -576,7 +574,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: sans-serif;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -782,7 +780,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 200;
   font-style: normal;
   font-stretch: normal;
@@ -791,7 +789,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 200;
   font-style: italic;
   font-stretch: normal;
@@ -800,7 +798,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -809,7 +807,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 300;
   font-style: italic;
   font-stretch: normal;
@@ -818,7 +816,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 400;
   font-style: normal;
   font-stretch: normal;
@@ -827,7 +825,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 400;
   font-style: italic;
   font-stretch: normal;
@@ -836,7 +834,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
@@ -845,7 +843,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 500;
   font-style: italic;
   font-stretch: normal;
@@ -854,7 +852,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -863,7 +861,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 600;
   font-style: italic;
   font-stretch: normal;
@@ -872,7 +870,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 700;
   font-style: normal;
   font-stretch: normal;
@@ -881,7 +879,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 700;
   font-style: italic;
   font-stretch: normal;
@@ -890,7 +888,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 900;
   font-style: normal;
   font-stretch: normal;
@@ -899,7 +897,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Source Code Pro';
+  font-family: 'Source Code Pro';
   font-weight: 900;
   font-style: italic;
   font-stretch: normal;
@@ -908,7 +906,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Spoqa Han Sans';
+  font-family: 'Spoqa Han Sans';
   font-weight: 100;
   font-style: normal;
   font-stretch: normal;
@@ -916,7 +914,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Spoqa Han Sans';
+  font-family: 'Spoqa Han Sans';
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -924,7 +922,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Spoqa Han Sans';
+  font-family: 'Spoqa Han Sans';
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
@@ -932,7 +930,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'Spoqa Han Sans';
+  font-family: 'Spoqa Han Sans';
   font-weight: 700;
   font-style: normal;
   font-stretch: normal;
@@ -940,7 +938,7 @@ template {
 }
 
 @font-face {
-  font-family: 'Nanum Gothic', 'fontello';
+  font-family: 'fontello';
   src: url("fonts/fontello/fonts/fontello.eot?42303643");
   src: url("fonts/fontello/fonts/fontello.eot?42303643#iefix") format("embedded-opentype"), url("fonts/fontello/fonts/fontello.woff2?42303643") format("woff2"), url("fonts/fontello/fonts/fontello.woff?42303643") format("woff"), url("fonts/fontello/fonts/fontello.ttf?42303643") format("truetype"), url("fonts/fontello/fonts/fontello.svg?42303643#fontello") format("svg");
   font-weight: normal;
@@ -958,7 +956,7 @@ template {
 }
 */
 [class^="icon-"]:before, [class*=" icon-"]:before {
-  font-family: 'Nanum Gothic', "fontello";
+  font-family: "fontello";
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -1031,7 +1029,7 @@ html {
 }
 
 body {
-  font-family: 'Nanum Gothic', 'Spoqa Han Sans', 'Montserrat', sans-serif;
+  font-family: 'Spoqa Han Sans', 'Montserrat', sans-serif;
   font-weight: 300;
   color: #3e3e40;
   margin: 0;
@@ -1042,7 +1040,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   padding-top: 30px;
-  font-family: 'Nanum Gothic', 'Spoqa Han Sans', 'Lato', sans-serif;
+  font-family: 'Spoqa Han Sans', 'Lato', sans-serif;
   color: #311e3e;
   font-weight: 700;
 }
@@ -1638,7 +1636,7 @@ td {
 }
 
 .recent-box .recent-title {
-  font-family: 'Nanum Gothic', 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   color: #311e3e;
   text-align: center;
@@ -1890,7 +1888,7 @@ td {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  font-family: 'Nanum Gothic', 'fontello';
+  font-family: 'fontello';
   /* font-size: 16px; */
   color: #078ddd;
 }
@@ -1902,7 +1900,7 @@ td {
 
 .blog-tags h1 {
   text-align: center;
-  font-family: 'Nanum Gothic', 'Lato', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: 36px;
   text-align: center;

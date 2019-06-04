@@ -4,7 +4,7 @@
 @import "fonts/source-code-pro/source-code-pro";
 @import "fonts/spoqa-han-sans/spoqa-han-sans";
 @import "fonts/fontello/fontello";
-@import url(https://fonts.googleapis.com.com/earlyaccess/nanumgothic.css);
+
 /* a11y */
 
 [class$="invisible"] {
@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Spoqa Han Sans', 'Montserrat', sans-serif;
   font-weight: 300;
   color: $dark-gray;
   margin: 0;
@@ -39,7 +39,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   padding-top: 30px;
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Spoqa Han Sans', 'Lato', sans-serif;
   color: $dark-purple;
   font-weight: 700;
 }
