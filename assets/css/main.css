@@ -16,28 +16,28 @@ p {
 }
 
 .highlight {
-  background-color: #000000;
+  background-color: #222222;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   margin: 0;
 }
 
 .highlighter-rouge {
-  color: #000000;
+  color: #222222;
   font-size: 0.9rem;
   font-weight: 400;
   /* border: 1px solid #607D8B; */
   -webkit-border-radius: 3px;
   border-radius: 3px;
   padding: 0.1rem 0;
-  background: #000000;
+  background: #222222;
 }
 
 code.highlighter-rouge {
   padding: 1px 3px;
   font-weight: 500;
   color: #c7264e;
-  background-color: #000000;
+  background-color: #222222;
 }
 
 .highlight .hll {
@@ -45,7 +45,7 @@ code.highlighter-rouge {
 }
 
 .highlight .c {
-  color: #000000;
+  color: #a52424;
 }
 
 
