@@ -46,3 +46,6 @@ plugins:
 
 include: [_pages]
 exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+
+#Open the "_sass > base", open "_variables.scss"
+google_fonts: "Nanum+Gothic:400,700"
