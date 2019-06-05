@@ -15,7 +15,7 @@ p {
 }
 
 .highlight {
-  background-color: #fafafa;
+  background-color: #1e1e1e;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   margin: 0;
@@ -44,7 +44,7 @@ code.highlighter-rouge {
 }
 
 .highlight .c {
-  color: #999;
+  color: #9b9b9b;
 }
 
 
@@ -59,14 +59,14 @@ code.highlighter-rouge {
 /* Error */
 
 .highlight .k {
-  color: #069;
+  color: #569cd6;
 }
 
 
 /* Keyword */
 
 .highlight .o {
-  color: #555;
+  color: #c8c8c8;
 }
 
 
@@ -88,14 +88,14 @@ code.highlighter-rouge {
 /* Comment.Preproc */
 
 .highlight .c1 {
-  color: #999;
+  color: #9b9b9b;
 }
 
 
 /* Comment.Single */
 
 .highlight .cs {
-  color: #999;
+  color: #9b9b9b;
 }
 
 
@@ -170,35 +170,35 @@ code.highlighter-rouge {
 /* Generic.Traceback */
 
 .highlight .kc {
-  color: #069;
+  color: #569cd6;
 }
 
 
 /* Keyword.Constant */
 
 .highlight .kd {
-  color: #069;
+  color: #569cd6;
 }
 
 
 /* Keyword.Declaration */
 
 .highlight .kn {
-  color: #069;
+  color: #569cd6;
 }
 
 
 /* Keyword.Namespace */
 
 .highlight .kp {
-  color: #069;
+  color: #569cd6;
 }
 
 
 /* Keyword.Pseudo */
 
 .highlight .kr {
-  color: #069;
+  color: #569cd6;
 }
 
 
@@ -233,7 +233,7 @@ code.highlighter-rouge {
 /* Name.Attribute */
 
 .highlight .nb {
-  color: #366;
+  color: #4f9fcf;
 }
 
 
@@ -247,7 +247,7 @@ code.highlighter-rouge {
 /* Name.Class */
 
 .highlight .no {
-  color: #360;
+  color: #0a8;
 }
 
 
@@ -261,7 +261,7 @@ code.highlighter-rouge {
 /* Name.Decorator */
 
 .highlight .ni {
-  color: #999;
+  color: #c8c8c8;
 }
 
 
@@ -289,35 +289,35 @@ code.highlighter-rouge {
 /* Name.Label */
 
 .highlight .nn {
-  color: #0cf;
+  color: #4ec9a4;
 }
 
 
 /* Name.Namespace */
 
 .highlight .nt {
-  color: #2f6f9f;
+  color: #4ec9a4;
 }
 
 
 /* Name.Tag */
 
 .highlight .nv {
-  color: #033;
+  color: #4ec9a4;
 }
 
 
 /* Name.Variable */
 
 .highlight .ow {
-  color: #000;
+  color: #c8c8c8;
 }
 
 
 /* Operator.Word */
 
 .highlight .w {
-  color: #bbb;
+  color: #c8c8c8;
 }
 
 
@@ -409,7 +409,7 @@ code.highlighter-rouge {
 /* Literal.String.Other */
 
 .highlight .sr {
-  color: #3aa;
+  color: #4ec9a4;
 }
 
 
@@ -430,28 +430,28 @@ code.highlighter-rouge {
 /* Literal.String.Symbol */
 
 .highlight .bp {
-  color: #366;
+  color: #4ec9a4;
 }
 
 
 /* Name.Builtin.Pseudo */
 
 .highlight .vc {
-  color: #033;
+  color: #4ec9a4;
 }
 
 
 /* Name.Variable.Class */
 
 .highlight .vg {
-  color: #033;
+  color: #4ec9a4;
 }
 
 
 /* Name.Variable.Global */
 
 .highlight .vi {
-  color: #033;
+  color: #4ec9a4;
 }
 
 
@@ -467,7 +467,7 @@ code.highlighter-rouge {
 .css .o,
 .css .o+.nt,
 .css .nt+.nt {
-  color: #999;
+  color: #c8c8c8;
 }
 
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
