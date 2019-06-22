@@ -91,7 +91,7 @@ ___
 ### 4.1.1 Embedding 계층
 ![p4-1-1](https://user-images.githubusercontent.com/24144491/59848679-b60f0980-93a0-11e9-9d19-238ce3a8b238.png)
 
-
+> corrections : hidden layer shape = (1 x 100)
 
 : 실제 단어의 원핫 표현과 W_in의 가중치 매트릭스간의 곱의 결과는 W_in[원핫 표현에서 해당 단어의 index 번째 행] 과 동일하다는 것을 알 수 있다.
 
@@ -193,13 +193,11 @@ ___
 - 마지막 출력층 값을 확률로 바꾸기 위해 `sigmoid` 함수 활용 : y = 1 / (1 + exp(-x))
 - ![s4-3](https://user-images.githubusercontent.com/24144491/59848684-b6a7a000-93a0-11e9-9760-a1d761ca31e0.png)
 
-- [warning] 책에서는 [식 1.7] L = -(시그마_k(t_k x log(y_k)) 와 위의 [식 4.3]이 다중 분류에서 출력층에 뉴런을 2개만 사용할 경우 위의 식과 같아진다고 하는데 
-
-  - 식 1.7의 경우 k 번째 정답 값이 0인경우 0 x log(y_k) = 0이 되므로 0인 라벨의 loss는 더하지 않게 되지만
-  - 식 4.3의 경우 t 가 0이면 log(1-y) 값이 loss에 들어간다
-  - 따라서 두 경우는 같아질 수 없지 않을까?
+- [warning] 책에서는 [식 1.7] L = -(시그마_k(t_k x log(y_k)) 와 위의 [식 4.3]이 다중 분류에서 출력층에 뉴런을 2개만 사용할 경우 위의 식과 같아진다
 
 - ![s4-4](https://user-images.githubusercontent.com/24144491/59848678-b5767300-93a0-11e9-934e-217c34371bd3.png)
+
+> corrections : delta(L) / delta(y)  = - (t/y) + (1-t)/(1-y) = (y-t)/(y(1-y))
 
   : 출력층의 backward의 경우 L을 x(sigmoid 전)로 미분한 값, *y-t* 만 넘겨주면 된다. (매우 simple!)
 
